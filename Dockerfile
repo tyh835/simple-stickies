@@ -28,12 +28,14 @@ RUN apk add --no-cache --virtual .build-deps \
 
 COPY . .
 
-RUN export DJANGO_SECRET_KEY=$(cat app/secret.key)
-
 EXPOSE 8000
+
+WORKDIR /usr/src/app
+
+ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0:8000 --workers=3"
 
 RUN chmod 511 ./docker-entrypoint.sh
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
-CMD ["gunicorn", "app.wsgi:application", "--bind 0.0.0.0:8000", "--workers 3"]
+CMD ["gunicorn", "app.wsgi:application"]

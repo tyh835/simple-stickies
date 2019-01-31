@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY') or 'doNOTuseinPRODUCTION'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY') or 'fakekey'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DJANGO_DEBUG') == 'TRUE' or False
+DEBUG = os.getenv('DJANGO_DEBUG') == 'True' or False
 
 ALLOWED_HOSTS = ['localhost']
 
@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'django',
         'USER': 'django',
-        'PASSWORD': 'thisisapassword1234',
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD') or 'thisisapassword',
         'HOST': 'postgres',
         'PORT': '5432'
     }
@@ -158,3 +158,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")

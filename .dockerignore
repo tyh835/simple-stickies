@@ -1,0 +1,9 @@
+# Hidden files
+.DS_Store
+.dockerignore
+.gitignore
+.git
+
+# Dependencies
+node_modules
+
