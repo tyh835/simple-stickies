@@ -120,6 +120,3 @@ dmypy.json
 
 # Node.js
 node_modules
-
-# Secret
-secret.key
