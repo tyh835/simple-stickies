@@ -1,7 +1,7 @@
 version: "3"
 
-# Note this docker-compose file should be MODIFIED for PRODUCTION
-# i.e. remove DJANGO_DEBUG to False
+# NOTE this docker-compose file should be MODIFIED for PRODUCTION
+# i.e. change DJANGO_DEBUG to False
 services:
   django:
     build: .
