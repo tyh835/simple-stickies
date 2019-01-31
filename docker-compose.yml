@@ -1,6 +1,14 @@
-version: '3'
+version: "3"
 
 services:
+  django:
+    build: .
+    environment:
+      DJANGO_DEBUG: "TRUE"
+      DJANGO_MANAGEPY_MIGRATE: "TRUE"
+      DJANGO_MANAGEPY_COLLECTSTATIC: "TRUE"
+    ports:
+      - 8000:8000
   postgres:
     image: postgres:11.1-alpine
     restart: always
@@ -12,7 +20,6 @@ services:
       - 5432:5432
     volumes:
       - postgres:/var/lib/postgresql/data
-
 
 volumes:
   postgres:
