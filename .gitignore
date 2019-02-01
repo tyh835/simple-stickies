@@ -120,3 +120,6 @@ dmypy.json
 
 # Node.js
 node_modules
+
+# Collected Static Assets
+app/static

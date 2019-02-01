@@ -34,7 +34,7 @@ WORKDIR /usr/src/app
 
 ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0:8000 --workers=3"
 
-RUN chmod 511 ./docker-entrypoint.sh
+RUN chmod 511 /usr/src/app/docker-entrypoint.sh
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 

@@ -1,7 +1,7 @@
 version: "3"
 
 # NOTE this docker-compose file should be MODIFIED for PRODUCTION
-# i.e. change DJANGO_DEBUG to False
+# i.e. change DJANGO_DEBUG to False, delete `command` and `volumes` for django
 services:
   django:
     build: .
@@ -13,6 +13,9 @@ services:
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
     ports:
       - 8000:8000
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app:/usr/src/app
   postgres:
     image: postgres:11.1-alpine
     restart: always
