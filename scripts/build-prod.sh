@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -xe
 
 yarn build:prod
 docker-compose build
