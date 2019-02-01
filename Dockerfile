@@ -38,4 +38,4 @@ RUN chmod 511 /usr/src/app/docker-entrypoint.sh
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
-CMD ["gunicorn", "app.wsgi:application"]
+CMD gunicorn app.wsgi:application
