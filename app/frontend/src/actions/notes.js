@@ -1,11 +1,13 @@
 import axios from 'axios';
-import { SET_NOTES } from '../actionTypes';
+import { SET_NOTES, LOADING_SUCCESS, LOADING_FAIL } from '../actionTypes';
 
 export const fetchNotes = () => async dispatch => {
   try {
-    const response = axios.get('/api/notes');
+    dispatch({ type: START_LOADING });
+    const response = await axios.get('/api/notes');
     dispatch({ type: SET_NOTES, payload: response });
+    setTimeout(() => dispatch({ type: LOADING_SUCCESS }), 500);
   } catch (err) {
-    console.log(err.message);
+    dispatch({ type: LOADING_FAIL, payload: err.message });
   }
 };

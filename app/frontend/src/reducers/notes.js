@@ -1,8 +1,7 @@
 import { SET_NOTES } from '../actionTypes';
 
 const initialState = {
-  loading: false,
-  notes: [],
+  currentNotes: [],
   cachedNotes: []
 };
 
@@ -11,7 +10,7 @@ export default (state = initialState, { type, payload }) => {
     case SET_NOTES:
       return {
         ...state,
-        notes: payload,
+        currentNotes: payload,
         cachedNotes: [...payload]
       };
     default:
