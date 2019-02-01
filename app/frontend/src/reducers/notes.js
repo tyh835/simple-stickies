@@ -11,7 +11,7 @@ export default (state = initialState, { type, payload }) => {
     case SET_NOTES:
       return {
         ...state,
-        notes: [...payload],
+        notes: payload,
         cachedNotes: [...payload]
       };
     default:
