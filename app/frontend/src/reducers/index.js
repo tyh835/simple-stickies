@@ -1,8 +1,6 @@
-const initialState = {};
+import { combineReducers } from 'redux';
+import notes from './notes';
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+export default combineReducers({
+  notes
+});
