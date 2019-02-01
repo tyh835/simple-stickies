@@ -1,5 +1,13 @@
 # Simply Stickys
 
-React/Django app backed by Postgres and Docker
+React/Django app backed by Postgres and Docker.
 
-Work in Progress
+Make sure you have `pipenv`, `yarn`, and `docker-compose` installed.
+
+Run `yarn start` to begin development.
+
+Run `yarn build` to build for production (Webpack and Docker Images)
+
+Run `yarn stop` to stop running containers in dev following quitting webpack.
+
+Work in Progress.
