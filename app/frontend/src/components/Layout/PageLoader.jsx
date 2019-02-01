@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const PageLoader = ({ loading }) => {
   return (
-    <div className={`pageloader ${loading && 'page--loading'}`}>
+    <div className={`pageloader ${loading && 'is-loading'}`}>
       <span className="title">Loading...</span>
     </div>
   );
