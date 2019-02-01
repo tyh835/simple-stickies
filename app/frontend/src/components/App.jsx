@@ -1,19 +1,12 @@
 import React from 'react';
-import Header from './Header/Header.jsx';
-import './App.scss';
+import Layout from './Layout';
+import NotesBoard from './NotesBoard';
 
 const App = () => {
   return (
-    <>
-      <Header />
-      <section className="hero">
-        <div className="hero-body">
-          <div className="container">
-            <h1 className="title is-1 has-text-centered">Hello React!</h1>
-          </div>
-        </div>
-      </section>
-    </>
+    <Layout>
+      <NotesBoard />
+    </Layout>
   );
 };
 
