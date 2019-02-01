@@ -2,13 +2,11 @@ FROM python:3.6-alpine
 
 ENV PYTHONBUFFERED=1
 
-RUN apk update
-
 WORKDIR /usr/src
 
 COPY requirements.txt .
 
-RUN apk add --no-cache --virtual .build-deps \
+RUN apk update && apk add --no-cache --virtual .build-deps \
   ca-certificates gcc postgresql-dev linux-headers musl-dev \
   libffi-dev jpeg-dev zlib-dev \
   && pip install -r requirements.txt \
