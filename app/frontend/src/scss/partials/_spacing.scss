@@ -1,0 +1,97 @@
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge((
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 4.5),
+  7: ($spacer * 6),
+  8: ($spacer * 7.5)
+), $spacers);
+
+$grid-breakpoints: (
+  xs: 0,
+  mobile: 576px,
+  tablet: $tablet,
+  desktop: $desktop,
+  widescreen: $widescreen,
+  hd: $fullhd
+) !default;
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size, $length in $spacers {
+
+        .has-#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
+        .has-#{$abbrev}t#{$infix}-#{$size},
+        .has-#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-top: $length !important;
+        }
+        .has-#{$abbrev}r#{$infix}-#{$size},
+        .has-#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-right: $length !important;
+        }
+        .has-#{$abbrev}b#{$infix}-#{$size},
+        .has-#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-bottom: $length !important;
+        }
+        .has-#{$abbrev}l#{$infix}-#{$size},
+        .has-#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-left: $length !important;
+        }
+
+        // For example: has-mx-desktop-3 = margin-x of 1 rem at desktop breakpoint
+      }
+    }
+
+    // Some special margin utils
+    .has-m#{$infix}-auto { margin: auto !important; }
+    .has-mt#{$infix}-auto,
+    .has-my#{$infix}-auto {
+      margin-top: auto !important;
+    }
+    .has-mr#{$infix}-auto,
+    .has-mx#{$infix}-auto {
+      margin-right: auto !important;
+    }
+    .has-mb#{$infix}-auto,
+    .has-my#{$infix}-auto {
+      margin-bottom: auto !important;
+    }
+    .has-ml#{$infix}-auto,
+    .has-mx#{$infix}-auto {
+      margin-left: auto !important;
+    }
+  }
+}
