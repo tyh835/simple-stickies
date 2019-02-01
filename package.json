@@ -16,7 +16,8 @@
     "build:prod": "webpack --mode production",
     "start": "./scripts/start-dev.sh",
     "start:dev": "webpack --mode development --watch",
-    "stop": "./scripts/stop-dev.sh"
+    "stop": "./scripts/stop-dev.sh",
+    "test": "./scripts/run-tests.sh"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",

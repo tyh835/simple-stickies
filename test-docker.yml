@@ -1,9 +1,8 @@
 version: '3'
 
-# NOTE this docker-compose file should be MODIFIED for PRODUCTION
-# i.e. change DJANGO_DEBUG to False, delete `command` and `volumes` for django
+# This docker-compose file is strictly used for running tests
 services:
-  django:
+  django_test:
     build: .
     environment:
       DJANGO_SECRET_KEY: '${DJANGO_SECRET_KEY}'
@@ -11,11 +10,7 @@ services:
       DJANGO_MANAGEPY_MIGRATE: 'True'
       DJANGO_MANAGEPY_COLLECTSTATIC: 'True'
       POSTGRES_PASSWORD: '${POSTGRES_PASSWORD}'
-    ports:
-      - 8000:8000
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./app:/usr/src/app
+    command: python manage.py test
 
   postgres:
     image: postgres:11.1-alpine
@@ -27,7 +22,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - testdb:/var/lib/postgresql/data
 
 volumes:
-  postgres:
+  testdb:

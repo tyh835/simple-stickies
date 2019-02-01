@@ -4,6 +4,8 @@ React/Django app backed by Postgres and Docker.
 
 Make sure you have `pipenv`, `yarn`, and `docker-compose` installed.
 
+Run `yarn test` to run unit tests.
+
 Run `yarn start` to begin development.
 
 Run `yarn build` to build for production (Webpack and Docker Images)
