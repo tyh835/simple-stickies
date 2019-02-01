@@ -6,6 +6,7 @@
   "main": "index.js",
   "repository": "https://github.com/tyh835/simple-stickys.git",
   "dependencies": {
+    "axios": "^0.18.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
