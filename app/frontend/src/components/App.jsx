@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
+import Header from './Header/Header.jsx';
 import './App.scss';
 
-class App extends Component {
-  render() {
-    return (
+const App = () => {
+  return (
+    <>
+      <Header />
       <section class="hero">
         <div class="hero-body">
           <div class="container">
@@ -11,8 +13,8 @@ class App extends Component {
           </div>
         </div>
       </section>
-    );
-  }
-}
+    </>
+  );
+};
 
 export default App;
