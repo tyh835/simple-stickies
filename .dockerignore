@@ -1,9 +1,16 @@
 # Hidden files
 .DS_Store
-.dockerignore
 .gitignore
 .git
+.env
 
 # Dependencies
+Pipfile
+Pipfile.lock
 node_modules
+
+# Docker
+.dockerignore
+docker-compose.yml
+
 
