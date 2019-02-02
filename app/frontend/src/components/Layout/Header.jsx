@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { toggleMenu } from '../../actions';
 
 const Header = ({ showMenu, toggleMenu }) => {
@@ -42,6 +43,11 @@ const Header = ({ showMenu, toggleMenu }) => {
       </div>
     </nav>
   );
+};
+
+Header.propTypes = {
+  showMenu: PropTypes.bool.isRequired,
+  toggleMenu: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

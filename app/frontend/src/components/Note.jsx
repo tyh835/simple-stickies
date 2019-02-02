@@ -26,7 +26,7 @@ const Note = ({ note }) => {
 };
 
 Note.propTypes = {
-  note: PropTypes.object
+  note: PropTypes.object.isRequired
 };
 
 export default Note;

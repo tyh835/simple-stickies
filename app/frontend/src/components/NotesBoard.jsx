@@ -15,7 +15,7 @@ class NotesBoard extends Component {
       <section className="section">
         <div className="container board">
           {notes.map(note => (
-            <Note note={note} key={note.id} />
+            <Note note={note} key={note.id || note.tempId} />
           ))}
         </div>
       </section>
@@ -25,7 +25,7 @@ class NotesBoard extends Component {
 
 NotesBoard.propTypes = {
   fetchNotes: PropTypes.func,
-  notes: PropTypes.array
+  notes: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({

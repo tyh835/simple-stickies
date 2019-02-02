@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const PageLoader = ({ loading }) => {
   return (
@@ -7,6 +8,10 @@ const PageLoader = ({ loading }) => {
       <span className="title">Loading...</span>
     </div>
   );
+};
+
+PageLoader.propTypes = {
+  loading: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
