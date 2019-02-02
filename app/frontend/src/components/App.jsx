@@ -1,26 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Layout from './Layout';
 import NotesBoard from './NotesBoard';
-import PostNoteModal from './Modals/PostNoteModal';
-import { POST_NOTE_MODAL } from '../actions/modals';
+import { renderModal } from './Modals';
 
 const App = ({ showModal, modalType }) => {
-  const renderModal = () => {
-    switch (modalType) {
-      case POST_NOTE_MODAL:
-        return <PostNoteModal />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <Layout>
-      {showModal && renderModal()}
+      {showModal && renderModal(modalType)}
       <NotesBoard />
     </Layout>
   );
+};
+
+App.propTypes = {
+  showModal: PropTypes.bool.isRequired,
+  modalType: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -34,7 +34,8 @@ class NotesBoard extends Component {
 
 NotesBoard.propTypes = {
   fetchNotes: PropTypes.func,
-  notes: PropTypes.array.isRequired
+  notes: PropTypes.array.isRequired,
+  openPostNoteModal: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
