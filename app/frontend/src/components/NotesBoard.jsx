@@ -13,8 +13,7 @@ class NotesBoard extends Component {
     const { notes } = this.props;
     return (
       <section className="section">
-        <div className="container">
-          <h2 className="subtitle is-2 has-text-centered">Sticky Notes</h2>
+        <div className="container board">
           {notes.map(note => (
             <Note note={note} key={note.id} />
           ))}

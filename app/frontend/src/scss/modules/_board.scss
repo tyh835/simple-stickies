@@ -1,0 +1,11 @@
+.board {
+  position: relative;
+  height: 800px;
+  margin-bottom: $gap;
+
+  .box {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+  }
+}
