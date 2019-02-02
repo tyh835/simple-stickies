@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const PageLoader = ({ loading }) => {
   return (
-    <div className={`pageloader ${loading && 'is-loading'}`}>
+    <div className={`pageloader ${loading ? 'is-loading' : ''}`}>
       <span className="title">Loading...</span>
     </div>
   );

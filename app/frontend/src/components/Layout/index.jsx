@@ -5,9 +5,9 @@ import PageLoader from './PageLoader';
 const Layout = ({ children }) => {
   return (
     <>
-      <PageLoader />
       <Header />
-      {children}
+      <PageLoader />
+      <div id="content">{children}</div>
     </>
   );
 };

@@ -17,7 +17,7 @@ const Header = ({ showMenu, toggleMenu }) => {
           </a>
           <a
             role="button"
-            className={`navbar-burger burger ${showMenu && 'is-active'}`}
+            className={`navbar-burger burger ${showMenu ? 'is-active' : ''}`}
             aria-label="menu"
             aria-expanded={`${showMenu}`}
             onClick={toggleMenu}
@@ -28,7 +28,7 @@ const Header = ({ showMenu, toggleMenu }) => {
           </a>
         </div>
 
-        <div className={`navbar-menu ${showMenu && 'is-active'}`}>
+        <div className={`navbar-menu ${showMenu ? 'is-active' : ''}`}>
           <div className="navbar-end">
             <div className="navbar-item is-centered">
               <a className="button is-primary">
