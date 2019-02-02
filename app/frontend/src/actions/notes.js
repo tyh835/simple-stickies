@@ -11,7 +11,7 @@ export const fetchNotes = () => async dispatch => {
     dispatch({ type: START_LOADING });
     const response = await axios.get('/api/notes');
     dispatch({ type: SET_NOTES, payload: response.data });
-    setTimeout(() => dispatch({ type: LOADING_SUCCESS }), 500);
+    setTimeout(() => dispatch({ type: LOADING_SUCCESS }), 1400);
   } catch (err) {
     dispatch({ type: LOADING_FAIL, payload: err.message });
   }

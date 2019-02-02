@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchNotes } from '../actions';
 
-const NotesBoard = ({ fetchNotes, notes }) => {
-  return (
-    <section className="section">
-      <div className="container">Hello React!</div>
-    </section>
-  );
-};
+class NotesBoard extends Component {
+  componentDidMount() {
+    setTimeout(this.props.fetchNotes, 0);
+  }
+
+  render() {
+    return (
+      <section className="section">
+        <div className="container">
+          <h2 className="subtitle is-2 has-text-centered">Sticky Notes</h2>
+        </div>
+      </section>
+    );
+  }
+}
 
 NotesBoard.propTypes = {
   fetchNotes: PropTypes.func,
