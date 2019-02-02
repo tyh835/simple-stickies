@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Note from './Note';
-import NoteForm from './NoteForm';
-import { fetchNotes } from '../actions';
+import { fetchNotes, openPostNoteModal } from '../actions';
 
 class NotesBoard extends Component {
   componentDidMount() {
@@ -11,7 +10,7 @@ class NotesBoard extends Component {
   }
 
   render() {
-    const { notes } = this.props;
+    const { notes, openPostNoteModal } = this.props;
     return (
       <section className="section">
         <div className="container board">
@@ -19,7 +18,15 @@ class NotesBoard extends Component {
             <Note note={note} key={note.id || note.tempId} />
           ))}
         </div>
-        <NoteForm />
+        <div className="container is-centered">
+          <button
+            className="button is-primary"
+            onClick={openPostNoteModal}
+            type="submit"
+          >
+            Add new Sticky!
+          </button>
+        </div>
       </section>
     );
   }
@@ -36,5 +43,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchNotes }
+  { fetchNotes, openPostNoteModal }
 )(NotesBoard);

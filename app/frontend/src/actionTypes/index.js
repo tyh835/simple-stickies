@@ -6,6 +6,10 @@ export const START_LOADING = 'START_LOADING';
 // Menu Action Types
 export const TOGGLE_MENU = 'TOGGLE_MENU';
 
+// Modal Action Types
+export const CLOSE_MODAL = 'CLOSE_MODAL';
+export const OPEN_MODAL = 'OPEN_MODAL';
+
 // Notes Action Types
 export const ADD_NOTE = 'ADD_NOTE';
 export const CLEAR_NEW_NOTE = 'CLEAR_NEW_NOTE';

@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   ADD_NOTE,
   CLEAR_NEW_NOTE,
+  CLOSE_MODAL,
   DELETE_NOTE,
   LOADING_SUCCESS,
   LOADING_FAIL,
@@ -48,6 +49,7 @@ export const postNote = (e, note) => async dispatch => {
     setTimeout(() => {
       dispatch({ type: ADD_NOTE, payload: response.data });
       dispatch({ type: LOADING_SUCCESS });
+      dispatch({ type: CLOSE_MODAL });
       dispatch({ type: CLEAR_NEW_NOTE });
     }, 1400);
   } catch (err) {
