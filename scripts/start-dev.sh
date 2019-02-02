@@ -2,5 +2,5 @@
 set -xe
 
 yarn build:dev
-docker-compose up -d --build
+docker-compose up -d
 yarn start:dev
