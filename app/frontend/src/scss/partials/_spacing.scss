@@ -1,20 +1,37 @@
 $spacer: 1rem !default;
 $spacers: () !default;
-$spacers: map-merge((
-  0: 0,
-  1: ($spacer * .25),
-  2: ($spacer * .5),
-  3: $spacer,
-  4: ($spacer * 1.5),
-  5: ($spacer * 3),
-  6: ($spacer * 4.5),
-  7: ($spacer * 6),
-  8: ($spacer * 7.5)
-), $spacers);
+$spacers: map-merge(
+  (
+    0: 0,
+    1: (
+      $spacer * 0.25
+    ),
+    2: (
+      $spacer * 0.5
+    ),
+    3: $spacer,
+    4: (
+      $spacer * 1.5
+    ),
+    5: (
+      $spacer * 3
+    ),
+    6: (
+      $spacer * 4.5
+    ),
+    7: (
+      $spacer * 6
+    ),
+    8: (
+      $spacer * 7.5
+    )
+  ),
+  $spacers
+);
 
 $grid-breakpoints: (
   xs: 0,
-  mobile: 576px,
+  mobile: $mobile,
   tablet: $tablet,
   desktop: $desktop,
   widescreen: $widescreen,
@@ -38,12 +55,20 @@ $grid-breakpoints: (
 }
 
 @function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
-  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+  @return if(breakpoint-min($name, $breakpoints) == null, '', '-#{$name}');
 }
 
-@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+@function breakpoint-next(
+  $name,
+  $breakpoints: $grid-breakpoints,
+  $breakpoint-names: map-keys($breakpoints)
+) {
   $n: index($breakpoint-names, $name);
-  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+  @return if(
+    $n < length($breakpoint-names),
+    nth($breakpoint-names, $n + 1),
+    null
+  );
 }
 
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -52,8 +77,9 @@ $grid-breakpoints: (
 
     @each $prop, $abbrev in (margin: m, padding: p) {
       @each $size, $length in $spacers {
-
-        .has-#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
+        .has-#{$abbrev}#{$infix}-#{$size} {
+          #{$prop}: $length !important;
+        }
         .has-#{$abbrev}t#{$infix}-#{$size},
         .has-#{$abbrev}y#{$infix}-#{$size} {
           #{$prop}-top: $length !important;
@@ -76,7 +102,9 @@ $grid-breakpoints: (
     }
 
     // Some special margin utils
-    .has-m#{$infix}-auto { margin: auto !important; }
+    .has-m#{$infix}-auto {
+      margin: auto !important;
+    }
     .has-mt#{$infix}-auto,
     .has-my#{$infix}-auto {
       margin-top: auto !important;

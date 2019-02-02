@@ -1,4 +1,8 @@
 @import '~bulma/sass/utilities/initial-variables';
 
-// NavBar customization
+// Global Variables
+$mobile: 576px;
+
+// Navbar Variables
 $navbar-height: 5rem;
+$navbar-breakpoint: $mobile;

@@ -1,8 +1,14 @@
-.is-loading {
-  transform: translateY(0) !important;
+.is-loading.is-loading {
+  transform: translateY(0);
 }
 
-.is-centered {
+.is-centered.is-centered {
   display: flex;
   justify-content: center;
+
+  @media (max-width: $mobile) {
+    .button {
+      width: 320px;
+    }
+  }
 }
