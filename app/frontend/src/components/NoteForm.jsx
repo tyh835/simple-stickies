@@ -6,7 +6,7 @@ import { postNote, updateNewNote } from '../actions';
 const NoteForm = ({ newNote, postNote, updateNewNote }) => {
   const { title, content } = newNote;
   return (
-    <form className="container" onSubmit={postNote}>
+    <form className="container" onSubmit={e => postNote(e, newNote)}>
       <div className="field">
         <label className="label">Title</label>
         <div className="control">

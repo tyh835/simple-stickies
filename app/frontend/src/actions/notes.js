@@ -1,5 +1,7 @@
 import axios from 'axios';
 import {
+  ADD_NOTE,
+  CLEAR_NEW_NOTE,
   DELETE_NOTE,
   LOADING_SUCCESS,
   LOADING_FAIL,
@@ -38,7 +40,20 @@ export const fetchNotes = () => async dispatch => {
   }
 };
 
-export const postNote = () => async dispatch => {};
+export const postNote = (e, note) => async dispatch => {
+  e.preventDefault();
+  try {
+    dispatch({ type: START_LOADING });
+    const response = await axios.post('/api/notes/', note);
+    setTimeout(() => {
+      dispatch({ type: ADD_NOTE, payload: response.data });
+      dispatch({ type: LOADING_SUCCESS });
+      dispatch({ type: CLEAR_NEW_NOTE });
+    }, 1400);
+  } catch (err) {
+    dispatch({ type: LOADING_FAIL, payload: err.message });
+  }
+};
 
 export const updateNewNote = e => {
   const { name, value } = e.target;
