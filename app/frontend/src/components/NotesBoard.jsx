@@ -24,7 +24,7 @@ class NotesBoard extends Component {
             onClick={openPostNoteModal}
             type="submit"
           >
-            Add new Sticky!
+            <strong>Add new Sticky!</strong>
           </button>
         </div>
       </section>
