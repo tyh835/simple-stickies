@@ -1,7 +1,7 @@
 // Import Actions
 import { toggleMenu } from './menu';
-import { fetchNotes } from './notes';
+import { deleteNote, fetchNotes, postNote, updateNewNote } from './notes';
 
 // Export Actions
 export { toggleMenu };
-export { fetchNotes };
+export { deleteNote, fetchNotes, postNote, updateNewNote };

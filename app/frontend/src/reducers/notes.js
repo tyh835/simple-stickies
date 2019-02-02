@@ -1,8 +1,12 @@
-import { DELETE_NOTE, SET_NOTES } from '../actionTypes';
+import { DELETE_NOTE, SET_NOTES, UPDATE_NEW_NOTE } from '../actionTypes';
 
 const initialState = {
   currentNotes: [],
-  cachedNotes: []
+  cachedNotes: [],
+  newNote: {
+    title: '',
+    content: ''
+  }
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -18,6 +22,15 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         currentNotes: payload,
         cachedNotes: [...payload]
+      };
+    case UPDATE_NEW_NOTE:
+      const { name, value } = payload;
+      return {
+        ...state,
+        newNote: {
+          ...state.newNote,
+          [name]: value
+        }
       };
     default:
       return state;

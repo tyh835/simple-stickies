@@ -9,5 +9,6 @@ export const TOGGLE_MENU = 'TOGGLE_MENU';
 // Notes Action Types
 export const DELETE_NOTE = 'DELETE_NOTE';
 export const SET_NOTES = 'SET_NOTES';
+export const UPDATE_NEW_NOTE = 'UPDATE_NEW_NOTE';
 
 // User Action Types

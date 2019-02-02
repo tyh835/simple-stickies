@@ -4,7 +4,8 @@ import {
   LOADING_SUCCESS,
   LOADING_FAIL,
   SET_NOTES,
-  START_LOADING
+  START_LOADING,
+  UPDATE_NEW_NOTE
 } from '../actionTypes';
 
 export const deleteNote = id => async dispatch => {
@@ -35,4 +36,17 @@ export const fetchNotes = () => async dispatch => {
   } catch (err) {
     dispatch({ type: LOADING_FAIL, payload: err.message });
   }
+};
+
+export const postNote = () => async dispatch => {};
+
+export const updateNewNote = e => {
+  const { name, value } = e.target;
+  return {
+    type: UPDATE_NEW_NOTE,
+    payload: {
+      name,
+      value
+    }
+  };
 };

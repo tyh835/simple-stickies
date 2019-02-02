@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Note from './Note';
+import NoteForm from './NoteForm';
 import { fetchNotes } from '../actions';
 
 class NotesBoard extends Component {
@@ -18,6 +19,7 @@ class NotesBoard extends Component {
             <Note note={note} key={note.id || note.tempId} />
           ))}
         </div>
+        <NoteForm />
       </section>
     );
   }
