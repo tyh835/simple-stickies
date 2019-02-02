@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Note from './Note';
 import { fetchNotes } from '../actions';
 
 class NotesBoard extends Component {
@@ -9,10 +10,14 @@ class NotesBoard extends Component {
   }
 
   render() {
+    const { notes } = this.props;
     return (
       <section className="section">
         <div className="container">
           <h2 className="subtitle is-2 has-text-centered">Sticky Notes</h2>
+          {notes.map(note => (
+            <Note note={note} key={note.id} />
+          ))}
         </div>
       </section>
     );

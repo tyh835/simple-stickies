@@ -6,5 +6,5 @@ class Note(models.Model):
     deleted = models.BooleanField(default=False)
     positionX = models.IntegerField(default=16)
     positionY = models.IntegerField(default=16)
-    text = models.CharField(max_length=500, blank=True)
+    content = models.CharField(max_length=500, blank=True)
     title = models.CharField(max_length=50)
