@@ -29,7 +29,7 @@ class Board extends Component {
     const { connectDropTarget, notes, openPostNoteModal } = this.props;
     return connectDropTarget(
       <section className="section">
-        <div className="container board">
+        <div className="container board" style={{ overflowY: 'hidden' }}>
           {notes.map(note => (
             <Note note={note} key={note.id || note.tempId} />
           ))}
