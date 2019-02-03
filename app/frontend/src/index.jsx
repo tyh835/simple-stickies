@@ -4,6 +4,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
+import { DragDropContextProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
 import App from './components/App';
 import rootReducer from './reducers';
 import './scss/main.scss';
@@ -17,7 +20,9 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <DragDropContextProvider backend={HTML5Backend}>
+      <App />
+    </DragDropContextProvider>
   </Provider>,
   document.getElementById('root')
 );
