@@ -3,6 +3,7 @@ import {
   CLEAR_NEW_NOTE,
   DELETE_NOTE,
   SET_NOTES,
+  MOVE_NOTE,
   UPDATE_NEW_NOTE
 } from '../actionTypes';
 
@@ -36,6 +37,20 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         currentNotes: state.currentNotes.filter(note => note.id === payload),
         cachedNotes: state.cachedNotes.filter(note => note.id === payload)
+      };
+    case MOVE_NOTE:
+      const { id, x, y } = payload;
+      return {
+        ...state,
+        currentNotes: state.currentNotes.map(note => {
+          if (note.id !== id) return note;
+          else
+            return {
+              ...note,
+              positionX: x,
+              positionY: y
+            };
+        })
       };
     case SET_NOTES:
       return {

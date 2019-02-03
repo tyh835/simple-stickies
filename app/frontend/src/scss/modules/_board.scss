@@ -9,4 +9,9 @@
     height: 240px;
     user-select: none;
   }
+
+  .dragging {
+    transform: translateY(-4px);
+    box-shadow: $dragging-shadow;
+  }
 }

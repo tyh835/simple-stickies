@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
 import Note from './Note';
 import { STICKY_NOTE } from './type';
-import { fetchNotes, openPostNoteModal } from '../../actions';
+import { fetchNotes, moveNote, openPostNoteModal } from '../../actions';
 
 const noteTarget = {
   drop(props, monitor, component) {
@@ -12,19 +12,15 @@ const noteTarget = {
       return;
     }
     const item = monitor.getItem();
+    const { id, positionX, positionY } = item.note;
     const delta = monitor.getDifferenceFromInitialOffset();
-    const left = Math.round(item.left + delta.x);
-    const top = Math.round(item.top + delta.y);
-    console.log(component);
-    component.moveNote(item.id, left, top);
+    const x = Math.round(positionX + delta.x);
+    const y = Math.round(positionY + delta.y);
+    component.props.moveNote(id, x, y);
   }
 };
 
 class Board extends Component {
-  moveNote(a, b, c) {
-    return `${a},${b},${c}`;
-  }
-
   componentDidMount() {
     setTimeout(this.props.fetchNotes, 0);
   }
@@ -68,5 +64,5 @@ const StickyBoard = DropTarget(STICKY_NOTE, noteTarget, connect => ({
 
 export default connect(
   mapStateToProps,
-  { fetchNotes, openPostNoteModal }
+  { fetchNotes, moveNote, openPostNoteModal }
 )(StickyBoard);

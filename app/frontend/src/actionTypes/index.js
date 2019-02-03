@@ -14,6 +14,7 @@ export const OPEN_MODAL = 'OPEN_MODAL';
 export const ADD_NOTE = 'ADD_NOTE';
 export const CLEAR_NEW_NOTE = 'CLEAR_NEW_NOTE';
 export const DELETE_NOTE = 'DELETE_NOTE';
+export const MOVE_NOTE = 'MOVE_NOTE';
 export const SET_NOTES = 'SET_NOTES';
 export const UPDATE_NEW_NOTE = 'UPDATE_NEW_NOTE';
 

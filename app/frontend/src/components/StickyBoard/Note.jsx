@@ -20,8 +20,8 @@ const getStyles = props => {
 
 const noteSource = {
   beginDrag(props) {
-    const { id, note } = props;
-    const { positionX, positionY } = note;
+    const { note } = props;
+    const { id, positionX, positionY } = note;
     return { id, note, positionX, positionY };
   }
 };

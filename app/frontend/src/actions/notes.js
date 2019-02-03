@@ -6,6 +6,7 @@ import {
   DELETE_NOTE,
   LOADING_SUCCESS,
   LOADING_FAIL,
+  MOVE_NOTE,
   SET_NOTES,
   START_LOADING,
   UPDATE_NEW_NOTE
@@ -40,6 +41,15 @@ export const fetchNotes = () => async dispatch => {
     dispatch({ type: LOADING_FAIL, payload: err.message });
   }
 };
+
+export const moveNote = (id, x, y) => ({
+  type: MOVE_NOTE,
+  payload: {
+    id,
+    x,
+    y
+  }
+});
 
 export const postNote = (e, note) => async dispatch => {
   e.preventDefault();
