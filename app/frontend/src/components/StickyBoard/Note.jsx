@@ -14,8 +14,7 @@ const getStyles = props => {
     transform,
     WebkitTransform: transform,
     opacity: isDragging ? 0 : 1,
-    height: isDragging ? 0 : '',
-    cursor: 'pointer'
+    height: isDragging ? 0 : ''
   };
 };
 
@@ -46,7 +45,7 @@ class Note extends Component {
           <div className="media-content">
             <div className="content">
               <p>
-                <strong>{note.title}</strong>
+                <strong style={{ cursor: 'pointer' }}>{note.title}</strong>
                 <br />
                 {note.content}
               </p>
