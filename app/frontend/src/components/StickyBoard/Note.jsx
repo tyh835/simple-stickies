@@ -44,8 +44,8 @@ class Note extends Component {
         <article className="media">
           <div className="media-content">
             <div className="content">
-              <p>
-                <strong style={{ cursor: 'pointer' }}>{note.title}</strong>
+              <p style={{ cursor: 'pointer' }}>
+                <strong >{note.title}</strong>
                 <br />
                 {note.content}
               </p>
@@ -64,7 +64,7 @@ Note.propTypes = {
 export const NotePreview = ({ note }) => {
   return (
     <div className="box dragging">
-      <article className="media">
+      <article className="media" >
         <div className="media-content">
           <div className="content">
             <p>

@@ -19,15 +19,7 @@ const getItemStyles = props => {
     };
   }
 
-  let { x, y } = currentOffset;
-
-  if (props.snapToGrid) {
-    x -= initialOffset.x;
-    y -= initialOffset.y;
-    [x, y] = snapToGrid(x, y);
-    x += initialOffset.x;
-    y += initialOffset.y;
-  }
+  const { x, y } = currentOffset;
 
   const transform = `translate(${x}px, ${y}px)`;
   return {
