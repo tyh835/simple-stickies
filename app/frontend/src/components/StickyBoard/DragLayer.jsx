@@ -8,9 +8,7 @@ const layerStyles = {
   pointerEvents: 'none',
   zIndex: 100,
   left: 0,
-  top: 0,
-  width: '100%',
-  height: '100%'
+  top: 0
 };
 
 function getItemStyles(props) {
@@ -54,9 +52,11 @@ const CustomDragLayer = props => {
     return null;
   }
   return (
-    <div style={layerStyles}>
-      <div style={getItemStyles(props)}>{renderItem(props)}</div>
-    </div>
+    <section className="section">
+      <div className="container board" style={layerStyles}>
+        <div style={getItemStyles(props)}>{renderItem(props)}</div>
+      </div>
+    </section>
   );
 };
 

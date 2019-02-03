@@ -62,14 +62,9 @@ Note.propTypes = {
   note: PropTypes.object.isRequired
 };
 
-const previewStyle = {
-  display: 'inline-block',
-  cursor: 'pointer'
-};
-
 export const NotePreview = ({ note }) => {
   return (
-    <div className="box dragging" style={previewStyle}>
+    <div className="box dragging">
       <article className="media">
         <div className="media-content">
           <div className="content">
