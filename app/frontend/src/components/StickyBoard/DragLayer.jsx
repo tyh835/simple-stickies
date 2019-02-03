@@ -11,7 +11,7 @@ const layerStyles = {
   top: 0
 };
 
-function getItemStyles(props) {
+const getItemStyles = props => {
   const { initialOffset, currentOffset } = props;
   if (!initialOffset || !currentOffset) {
     return {
@@ -34,7 +34,7 @@ function getItemStyles(props) {
     transform,
     WebkitTransform: transform
   };
-}
+};
 
 const CustomDragLayer = props => {
   const { isDragging } = props;
