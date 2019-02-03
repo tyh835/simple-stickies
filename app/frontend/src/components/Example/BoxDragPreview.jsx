@@ -1,7 +1,8 @@
 import React from 'react';
 
 const style = {
-  display: 'inline-block'
+  display: 'inline-block',
+  cursor: 'pointer'
 };
 
 const BoxDragPreview = ({ children }) => {

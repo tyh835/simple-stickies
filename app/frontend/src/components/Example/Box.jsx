@@ -12,7 +12,8 @@ const getStyles = props => {
     transform,
     WebkitTransform: transform,
     opacity: isDragging ? 0 : 1,
-    height: isDragging ? 0 : ''
+    height: isDragging ? 0 : '',
+    cursor: 'pointer'
   };
 };
 
