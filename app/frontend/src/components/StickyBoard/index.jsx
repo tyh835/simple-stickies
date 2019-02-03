@@ -1,15 +1,16 @@
 import React from 'react';
 import { DragDropContextProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import Container from './Container';
-import CustomDragLayer from './CustomDragLayer';
+import Board from './Board';
+import DragLayer from './DragLayer';
 
-const Example = () => {
+const StickyBoard = () => {
   return (
     <DragDropContextProvider backend={HTML5Backend}>
-      <Container />
-      <CustomDragLayer />
+      <Board />
+      <DragLayer />
     </DragDropContextProvider>
   );
 };
-export default Example;
+
+export default StickyBoard;

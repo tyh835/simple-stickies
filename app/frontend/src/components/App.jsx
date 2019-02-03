@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Layout from './Layout';
-import NotesBoard from './NotesBoard';
-import Example from './Example';
+import NotesBoard from './StickyBoard';
 import { renderModal } from './Modals';
 
 const App = ({ showModal, modalType }) => {
@@ -11,7 +10,6 @@ const App = ({ showModal, modalType }) => {
     <Layout>
       {showModal && renderModal(modalType)}
       <NotesBoard />
-      <Example />
     </Layout>
   );
 };

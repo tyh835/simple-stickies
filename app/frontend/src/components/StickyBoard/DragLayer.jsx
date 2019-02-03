@@ -1,7 +1,7 @@
 import React from 'react';
 import { DragLayer } from 'react-dnd';
 import { STICKY_NOTE } from './type';
-import BoxDragPreview from './BoxDragPreview';
+import { NotePreview } from './Note';
 
 const layerStyles = {
   position: 'fixed',
@@ -44,7 +44,7 @@ const CustomDragLayer = props => {
   const renderItem = ({ item, itemType }) => {
     switch (itemType) {
       case STICKY_NOTE:
-        return <BoxDragPreview>{item.children}</BoxDragPreview>;
+        return <NotePreview note={item.note} />;
       default:
         return null;
     }
