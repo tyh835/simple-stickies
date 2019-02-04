@@ -102,7 +102,6 @@ export const saveNotes = (e, currentNotes, cachedNotes) => dispatch => {
 
 export const updateNote = (e, id) => {
   const { name, value } = e.target;
-  console.log(`${name}: ${value}`);
   return {
     type: UPDATE_NOTE,
     payload: {

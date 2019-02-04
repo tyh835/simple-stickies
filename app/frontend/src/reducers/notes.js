@@ -68,11 +68,10 @@ export default (state = initialState, { type, payload }) => {
         cachedNotes: [...payload]
       };
     case UPDATE_NOTE:
-      console.log(payload);
       return {
         ...state,
         currentNotes: state.currentNotes.map(note => {
-          if (note.id !== parseInt(payload.id)) return note;
+          if (note.id !== payload.id) return note;
           else
             return {
               ...note,

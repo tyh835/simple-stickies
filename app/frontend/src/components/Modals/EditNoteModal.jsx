@@ -14,7 +14,7 @@ const EditNoteModal = ({
   saving,
   updateNote
 }) => {
-  const { title, content } = currentNotes.find(note => note.id == noteId);
+  const { title, content } = currentNotes.find(note => note.id === noteId);
 
   return (
     <Modal>
