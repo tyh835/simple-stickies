@@ -89,7 +89,7 @@ export const saveNotes = (e, currentNotes, cachedNotes) => dispatch => {
       }
     }
   });
-  setTimeout(() => dispatch({ type: SAVE_SUCCESS }), 500);
+  setTimeout(() => dispatch({ type: SAVE_SUCCESS }), 800);
 };
 
 export const updateNewNote = e => {
