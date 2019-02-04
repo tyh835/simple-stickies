@@ -12,7 +12,6 @@ const getStyles = props => {
   return {
     position: 'absolute',
     transform,
-    WebkitTransform: transform,
     opacity: isDragging ? 0 : 1,
     height: isDragging ? 0 : ''
   };
@@ -45,7 +44,7 @@ class Note extends Component {
           <div className="media-content">
             <div className="content">
               <p style={{ cursor: 'pointer' }}>
-                <strong >{note.title}</strong>
+                <strong>{note.title}</strong>
                 <br />
                 {note.content}
               </p>
@@ -58,13 +57,15 @@ class Note extends Component {
 }
 
 Note.propTypes = {
+  connectDragSource: PropTypes.func.isRequired,
+  isDraggin: PropTypes.bool.isRequired,
   note: PropTypes.object.isRequired
 };
 
 export const NotePreview = ({ note }) => {
   return (
     <div className="box dragging">
-      <article className="media" >
+      <article className="media">
         <div className="media-content">
           <div className="content">
             <p>

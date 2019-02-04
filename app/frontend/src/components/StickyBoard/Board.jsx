@@ -49,7 +49,8 @@ class Board extends Component {
 }
 
 Board.propTypes = {
-  fetchNotes: PropTypes.func,
+  connectDropTarget: PropTypes.func.isRequired,
+  fetchNotes: PropTypes.func.isRequired,
   notes: PropTypes.array.isRequired,
   openPostNoteModal: PropTypes.func.isRequired
 };

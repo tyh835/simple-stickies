@@ -4,10 +4,10 @@ import DragLayer from './DragLayer';
 
 const StickyBoard = () => {
   return (
-    <>
+    <div>
       <Board />
       <DragLayer />
-    </>
+    </div>
   );
 };
 
