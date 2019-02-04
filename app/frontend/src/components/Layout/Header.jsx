@@ -69,7 +69,7 @@ const mapStateToProps = state => ({
   currentNotes: state.notes.currentNotes,
   cachedNotes: state.notes.cachedNotes,
   showMenu: state.menu.showMenu,
-  saving: state.save.saving
+  saving: state.async.saving
 });
 
 export default connect(

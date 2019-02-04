@@ -1,7 +1,10 @@
-// Loading Action Types
-export const LOADING_FAIL = 'LOADING_FAIL';
-export const LOADING_SUCCESS = 'LOADING_SUCCESS';
-export const START_LOADING = 'START_LOADING';
+// Async Action Types
+export const LOADING_START = 'LOADING_START';
+export const LOADING_END = 'LOADING_END';
+export const LOADING_ERROR = 'LOADING_ERROR';
+export const SAVE_START = 'SAVE_START';
+export const SAVE_END = 'SAVE_END';
+export const SAVE_ERROR = 'SAVE_ERROR';
 
 // Menu Action Types
 export const TOGGLE_MENU = 'TOGGLE_MENU';
@@ -18,10 +21,5 @@ export const MOVE_NOTE = 'MOVE_NOTE';
 export const SET_NOTES = 'SET_NOTES';
 export const SAVE_NOTE = 'SAVE_NOTE';
 export const UPDATE_NEW_NOTE = 'UPDATE_NEW_NOTE';
-
-// Saving Action Types
-export const START_SAVE = 'START_SAVE';
-export const SAVE_SUCCESS = 'SAVE_SUCCESS';
-export const SAVE_FAIL = 'SAVE_FAIL';
 
 // User Action Types

@@ -15,7 +15,7 @@ PageLoader.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  loading: state.loading.loading
+  loading: state.async.loading
 });
 
 export default connect(mapStateToProps)(PageLoader);
