@@ -37,8 +37,8 @@ export default (state = initialState, { type, payload }) => {
     case DELETE_NOTE:
       return {
         ...state,
-        currentNotes: state.currentNotes.filter(note => note.id === payload),
-        cachedNotes: state.cachedNotes.filter(note => note.id === payload)
+        currentNotes: state.currentNotes.filter(note => note.id !== payload),
+        cachedNotes: state.cachedNotes.filter(note => note.id !== payload)
       };
     case MOVE_NOTE:
       return {

@@ -19,20 +19,28 @@ import {
 import { noteHasChanges } from '../utils/notes';
 
 export const deleteNote = id => async dispatch => {
+  if (
+    !window.confirm(
+      'Are you sure you want to delete this note? This action cannot be undone.'
+    )
+  )
+    return;
+
   dispatch({ type: LOADING_START });
   try {
     const response = await axios.delete(`/api/notes/${id}/`);
     if (response.status === 204) {
-      setTimeout(() => {
-        dispatch({ type: DELETE_NOTE, payload: response.data.id });
-      }, 1400);
+      dispatch({ type: CLOSE_MODAL });
+      dispatch({ type: DELETE_NOTE, payload: id });
     } else {
       throw new Error('Failed to delete note, please try again.');
     }
   } catch (err) {
     dispatch({ type: LOADING_ERROR, payload: err.message });
   }
-  dispatch({ type: LOADING_END });
+  setTimeout(() => {
+    dispatch({ type: LOADING_END });
+  }, 1400);
 };
 
 export const fetchNotes = () => async dispatch => {
@@ -60,8 +68,8 @@ export const postNote = (e, note) => async dispatch => {
   dispatch({ type: LOADING_START });
   try {
     const response = await axios.post('/api/notes/', note);
-    dispatch({ type: ADD_NOTE, payload: response.data });
     dispatch({ type: CLOSE_MODAL });
+    dispatch({ type: ADD_NOTE, payload: response.data });
     dispatch({ type: CLEAR_NEW_NOTE });
   } catch (err) {
     dispatch({ type: LOADING_ERROR, payload: err.message });

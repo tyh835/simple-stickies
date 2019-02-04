@@ -38,7 +38,7 @@ const Header = ({
         <div className={`navbar-menu ${showMenu ? 'is-active' : ''}`}>
           <div className="navbar-end">
             <div className="navbar-item is-centered">
-              <a className="button is-primary">
+              <a className="button is-primary is-outlined">
                 <strong>Sign up</strong>
               </a>
             </div>

@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from './Modal';
-import { closeModal, saveNotes, updateNote } from '../../actions';
+import { closeModal, deleteNote, saveNotes, updateNote } from '../../actions';
 
 const EditNoteModal = ({
   currentNotes,
   cachedNotes,
   closeModal,
+  deleteNote,
   noteId,
   saveNotes,
   saving,
@@ -56,6 +57,12 @@ const EditNoteModal = ({
                 >
                   Save Note
                 </button>
+                <button
+                  className="button is-danger is-outlined has-mx-3"
+                  onClick={() => deleteNote(noteId)}
+                >
+                  Delete Note
+                </button>
               </div>
             </div>
           </form>
@@ -69,7 +76,8 @@ EditNoteModal.propTypes = {
   cachedNotes: PropTypes.array.isRequired,
   currentNotes: PropTypes.array.isRequired,
   closeModal: PropTypes.func.isRequired,
-  noteId: PropTypes.string.isRequired,
+  deleteNote: PropTypes.func.isRequired,
+  noteId: PropTypes.number.isRequired,
   saveNotes: PropTypes.func.isRequired,
   updateNote: PropTypes.func.isRequired
 };
@@ -83,5 +91,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { closeModal, saveNotes, updateNote }
+  { closeModal, deleteNote, saveNotes, updateNote }
 )(EditNoteModal);
