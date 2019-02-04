@@ -20,7 +20,7 @@ const EditNoteModal = ({
     <Modal>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title">Add new note</p>
+          <p className="modal-card-title">Edit note</p>
           <button className="delete" onClick={closeModal} aria-label="close" />
         </header>
         <section className="modal-card-body">
