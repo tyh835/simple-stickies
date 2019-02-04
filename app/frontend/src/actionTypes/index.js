@@ -16,6 +16,12 @@ export const CLEAR_NEW_NOTE = 'CLEAR_NEW_NOTE';
 export const DELETE_NOTE = 'DELETE_NOTE';
 export const MOVE_NOTE = 'MOVE_NOTE';
 export const SET_NOTES = 'SET_NOTES';
+export const SAVE_NOTE = 'SAVE_NOTE';
 export const UPDATE_NEW_NOTE = 'UPDATE_NEW_NOTE';
+
+// Saving Action Types
+export const START_SAVE = 'START_SAVE';
+export const SAVE_SUCCESS = 'SAVE_SUCCESS';
+export const SAVE_FAIL = 'SAVE_FAIL';
 
 // User Action Types

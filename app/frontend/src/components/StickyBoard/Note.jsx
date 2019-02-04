@@ -58,7 +58,7 @@ class Note extends Component {
 
 Note.propTypes = {
   connectDragSource: PropTypes.func.isRequired,
-  isDraggin: PropTypes.bool.isRequired,
+  isDragging: PropTypes.bool.isRequired,
   note: PropTypes.object.isRequired
 };
 

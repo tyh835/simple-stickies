@@ -7,10 +7,15 @@ import {
   LOADING_SUCCESS,
   LOADING_FAIL,
   MOVE_NOTE,
+  SAVE_NOTE,
+  SAVE_SUCCESS,
+  SAVE_FAIL,
   SET_NOTES,
   START_LOADING,
+  START_SAVE,
   UPDATE_NEW_NOTE
 } from '../actionTypes';
+import { noteHasChanges } from '../utils/notes';
 
 export const deleteNote = id => async dispatch => {
   try {
@@ -65,6 +70,26 @@ export const postNote = (e, note) => async dispatch => {
   } catch (err) {
     dispatch({ type: LOADING_FAIL, payload: err.message });
   }
+};
+
+export const saveNotes = (e, currentNotes, cachedNotes) => dispatch => {
+  e.preventDefault();
+  dispatch({ type: START_SAVE });
+  currentNotes.forEach(async (note, i) => {
+    if (noteHasChanges(note, cachedNotes[i])) {
+      try {
+        const response = await axios.put(`/api/notes/${note.id}/`, note);
+        const updatedNote = response.data;
+        dispatch({
+          type: SAVE_NOTE,
+          payload: { id: updatedNote.id, updatedNote }
+        });
+      } catch (err) {
+        dispatch({ type: SAVE_FAIL, payload: err.message });
+      }
+    }
+  });
+  setTimeout(() => dispatch({ type: SAVE_SUCCESS }), 500);
 };
 
 export const updateNewNote = e => {

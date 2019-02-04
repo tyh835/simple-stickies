@@ -1,9 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { toggleMenu } from '../../actions';
+import { saveNotes, toggleMenu } from '../../actions';
 
-const Header = ({ showMenu, toggleMenu }) => {
+const Header = ({
+  currentNotes,
+  cachedNotes,
+  showMenu,
+  saving,
+  saveNotes,
+  toggleMenu
+}) => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="container has-px-mobile-5 has-px-desktop-0">
@@ -38,6 +45,14 @@ const Header = ({ showMenu, toggleMenu }) => {
             <div className="navbar-item is-centered">
               <a className="button is-light">Log in</a>
             </div>
+            <div className="navbar-item is-centered">
+              <a
+                className={`button is-primary ${saving ? 'is-loading' : ''}`}
+                onClick={e => saveNotes(e, currentNotes, cachedNotes)}
+              >
+                <strong>Save Changes</strong>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -51,10 +66,13 @@ Header.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  showMenu: state.menu.showMenu
+  currentNotes: state.notes.currentNotes,
+  cachedNotes: state.notes.cachedNotes,
+  showMenu: state.menu.showMenu,
+  saving: state.save.saving
 });
 
 export default connect(
   mapStateToProps,
-  { toggleMenu }
+  { saveNotes, toggleMenu }
 )(Header);

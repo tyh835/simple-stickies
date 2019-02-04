@@ -6,10 +6,11 @@ import {
   fetchNotes,
   moveNote,
   postNote,
+  saveNotes,
   updateNewNote
 } from './notes';
 
 // Export Actions
 export { toggleMenu };
 export { closeModal, openPostNoteModal };
-export { deleteNote, fetchNotes, moveNote, postNote, updateNewNote };
+export { deleteNote, fetchNotes, moveNote, postNote, saveNotes, updateNewNote };
