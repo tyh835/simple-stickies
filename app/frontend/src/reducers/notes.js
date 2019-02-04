@@ -5,6 +5,7 @@ import {
   MOVE_NOTE,
   SAVE_NOTE,
   SET_NOTES,
+  UPDATE_NOTE,
   UPDATE_NEW_NOTE
 } from '../actionTypes';
 
@@ -66,13 +67,25 @@ export default (state = initialState, { type, payload }) => {
         currentNotes: payload,
         cachedNotes: [...payload]
       };
+    case UPDATE_NOTE:
+      console.log(payload);
+      return {
+        ...state,
+        currentNotes: state.currentNotes.map(note => {
+          if (note.id !== parseInt(payload.id)) return note;
+          else
+            return {
+              ...note,
+              [payload.name]: payload.value
+            };
+        })
+      };
     case UPDATE_NEW_NOTE:
-      const { name, value } = payload;
       return {
         ...state,
         newNote: {
           ...state.newNote,
-          [name]: value
+          [payload.name]: payload.value
         }
       };
     default:

@@ -13,6 +13,7 @@ import {
   SAVE_END,
   SAVE_ERROR,
   SET_NOTES,
+  UPDATE_NOTE,
   UPDATE_NEW_NOTE
 } from '../actionTypes';
 import { noteHasChanges } from '../utils/notes';
@@ -85,7 +86,23 @@ export const saveNotes = (e, currentNotes, cachedNotes) => dispatch => {
       }
     }
   });
-  setTimeout(() => dispatch({ type: SAVE_END }), 800);
+  setTimeout(() => {
+    dispatch({ type: CLOSE_MODAL });
+    dispatch({ type: SAVE_END });
+  }, 800);
+};
+
+export const updateNote = (e, id) => {
+  const { name, value } = e.target;
+  console.log(`${name}: ${value}`);
+  return {
+    type: UPDATE_NOTE,
+    payload: {
+      id,
+      name,
+      value
+    }
+  };
 };
 
 export const updateNewNote = e => {
