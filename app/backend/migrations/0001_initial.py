@@ -14,9 +14,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Note',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('deleted', models.BooleanField(default=False)),
                 ('positionX', models.IntegerField(default=16)),
                 ('positionY', models.IntegerField(default=16)),
                 ('content', models.CharField(blank=True, max_length=500)),
