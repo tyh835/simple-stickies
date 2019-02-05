@@ -58,7 +58,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         cachedNotes: state.cachedNotes.map(note => {
           if (note.id !== payload.id) return note;
-          else return payload.updatedNote;
+          else return payload;
         })
       };
     case SET_NOTES:

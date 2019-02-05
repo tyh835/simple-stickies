@@ -19,12 +19,10 @@ import {
 import { noteHasChanges } from '../utils/notes';
 
 export const deleteNote = id => async dispatch => {
-  if (
-    !window.confirm(
-      'Are you sure you want to delete this note? This action cannot be undone.'
-    )
-  )
-    return;
+  const confirmed = !window.confirm(
+    'Are you sure you want to delete this note? This action cannot be undone.'
+  );
+  if (!confirmed) return;
 
   dispatch({ type: LOADING_START });
   try {
@@ -38,9 +36,7 @@ export const deleteNote = id => async dispatch => {
   } catch (err) {
     dispatch({ type: LOADING_ERROR, payload: err.message });
   }
-  setTimeout(() => {
-    dispatch({ type: LOADING_END });
-  }, 1400);
+  setTimeout(() => dispatch({ type: LOADING_END }), 1400);
 };
 
 export const fetchNotes = () => async dispatch => {
@@ -87,7 +83,7 @@ export const saveNotes = (e, currentNotes, cachedNotes) => dispatch => {
         const updatedNote = response.data;
         dispatch({
           type: SAVE_NOTE,
-          payload: { id: updatedNote.id, updatedNote }
+          payload: updatedNote
         });
       } catch (err) {
         dispatch({ type: SAVE_ERROR, payload: err.message });
