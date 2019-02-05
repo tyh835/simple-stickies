@@ -2,7 +2,7 @@ import { CLOSE_MODAL, OPEN_MODAL } from '../actionTypes';
 
 const initialState = {
   showModal: false,
-  noteId: '',
+  noteId: null,
   modalType: ''
 };
 
@@ -18,7 +18,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         showModal: true,
         modalType: payload.modalType,
-        noteId: payload.noteId || ''
+        noteId: payload.noteId || null
       };
     default:
       return state;
