@@ -19,14 +19,6 @@ const getStyles = props => {
   };
 };
 
-const noteSource = {
-  beginDrag(props) {
-    const { note } = props;
-    const { id, positionX, positionY } = note;
-    return { id, note, positionX, positionY };
-  }
-};
-
 class Note extends Component {
   componentDidMount() {
     const { connectDragPreview } = this.props;
@@ -68,26 +60,12 @@ Note.propTypes = {
   note: PropTypes.object.isRequired
 };
 
-export const NotePreview = ({ note }) => {
-  return (
-    <div className="box dragging">
-      <article className="media">
-        <div className="media-content">
-          <div className="content">
-            <p>
-              <strong>{note.title}</strong>
-              <br />
-              {note.content}
-            </p>
-          </div>
-        </div>
-      </article>
-    </div>
-  );
-};
-
-NotePreview.propTypes = {
-  note: PropTypes.object.isRequired
+const noteSource = {
+  beginDrag(props) {
+    const { note } = props;
+    const { id, positionX, positionY } = note;
+    return { id, note, positionX, positionY };
+  }
 };
 
 const DraggableNote = DragSource(

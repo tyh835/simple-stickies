@@ -1,12 +1,12 @@
 import React from 'react';
 import Board from './Board';
-import DragLayer from './DragLayer';
+import BoardDragLayer from './BoardDragLayer';
 
 const StickyBoard = () => {
   return (
     <div>
       <Board />
-      <DragLayer />
+      <BoardDragLayer />
     </div>
   );
 };

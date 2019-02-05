@@ -6,20 +6,6 @@ import Note from './Note';
 import { STICKY_NOTE } from './type';
 import { fetchNotes, moveNote, openPostNoteModal } from '../../actions';
 
-const noteTarget = {
-  drop(props, monitor, component) {
-    if (!component) {
-      return;
-    }
-    const item = monitor.getItem();
-    const { id, positionX, positionY } = item.note;
-    const delta = monitor.getDifferenceFromInitialOffset();
-    const x = Math.round(positionX + delta.x);
-    const y = Math.round(positionY + delta.y);
-    component.props.moveNote(id, x, y);
-  }
-};
-
 class Board extends Component {
   componentDidMount() {
     setTimeout(this.props.fetchNotes, 0);
@@ -55,13 +41,27 @@ Board.propTypes = {
   openPostNoteModal: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-  notes: state.notes.currentNotes
-});
+const noteTarget = {
+  drop(props, monitor, component) {
+    if (!component) {
+      return;
+    }
+    const item = monitor.getItem();
+    const { id, positionX, positionY } = item.note;
+    const delta = monitor.getDifferenceFromInitialOffset();
+    const x = Math.round(positionX + delta.x);
+    const y = Math.round(positionY + delta.y);
+    component.props.moveNote(id, x, y);
+  }
+};
 
 const StickyBoard = DropTarget(STICKY_NOTE, noteTarget, connect => ({
   connectDropTarget: connect.dropTarget()
 }))(Board);
+
+const mapStateToProps = state => ({
+  notes: state.notes.currentNotes
+});
 
 export default connect(
   mapStateToProps,
