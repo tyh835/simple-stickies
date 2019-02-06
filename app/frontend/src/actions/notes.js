@@ -25,16 +25,15 @@ export const deleteNote = id => async dispatch => {
   if (!confirmed) return;
 
   dispatch({ type: LOADING_START });
+  dispatch({ type: CLOSE_MODAL });
   try {
     const response = await axios.delete(`/api/notes/${id}/`);
     if (response.status === 204) {
-      dispatch({ type: CLOSE_MODAL });
       dispatch({ type: DELETE_NOTE, payload: id });
     } else {
       throw new Error('Failed to delete note, please try again.');
     }
   } catch (err) {
-    dispatch({ type: CLOSE_MODAL });
     dispatch({ type: LOADING_ERROR, payload: err.message });
   }
   setTimeout(() => dispatch({ type: LOADING_END }), 1400);
@@ -63,13 +62,12 @@ export const moveNote = (id, x, y) => ({
 export const postNote = (e, note) => async dispatch => {
   e.preventDefault();
   dispatch({ type: LOADING_START });
+  dispatch({ type: CLOSE_MODAL });
   try {
     const response = await axios.post('/api/notes/', note);
-    dispatch({ type: CLOSE_MODAL });
     dispatch({ type: ADD_NOTE, payload: response.data });
     dispatch({ type: CLEAR_NEW_NOTE });
   } catch (err) {
-    dispatch({ type: CLOSE_MODAL });
     dispatch({ type: LOADING_ERROR, payload: err.message });
   }
   setTimeout(() => dispatch({ type: LOADING_END }), 1400);
