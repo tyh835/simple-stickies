@@ -19,7 +19,7 @@ import {
 import { noteHasChanges } from '../utils/notes';
 
 export const deleteNote = id => async dispatch => {
-  const confirmed = !window.confirm(
+  const confirmed = window.confirm(
     'Are you sure you want to delete this note? This action cannot be undone.'
   );
   if (!confirmed) return;
