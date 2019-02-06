@@ -29,7 +29,6 @@ const Board = ({ connectDropTarget, notes, openPostNoteModal }) => {
 
 Board.propTypes = {
   connectDropTarget: PropTypes.func.isRequired,
-  fetchNotes: PropTypes.func.isRequired,
   moveNote: PropTypes.func.isRequired,
   notes: PropTypes.array.isRequired,
   openPostNoteModal: PropTypes.func.isRequired
