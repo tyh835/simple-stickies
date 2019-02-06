@@ -6,7 +6,7 @@ import { getEmptyImage } from 'react-dnd-html5-backend';
 import { openEditNoteModal } from '../../actions';
 import { STICKY_NOTE } from './type';
 
-const getStyles = ({ note, isDragging }) => {
+const getStyles = (note, isDragging) => {
   const { positionX, positionY } = note;
   const transform = `translate3d(${positionX}px, ${positionY}px, 0)`;
 
@@ -34,7 +34,7 @@ const Note = ({
   return connectDragSource(
     <div
       className="box"
-      style={getStyles({ note, isDragging })}
+      style={getStyles(note, isDragging)}
       onDoubleClick={() => openEditNoteModal(note.id)}
     >
       <article className="media">
