@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
 import Note from './Note';
 import { STICKY_NOTE } from './type';
-import { fetchNotes, moveNote, openPostNoteModal } from '../../actions';
+import { moveNote, openPostNoteModal } from '../../actions';
 
 const Board = ({ connectDropTarget, notes, openPostNoteModal }) => {
   return connectDropTarget(
@@ -56,5 +56,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchNotes, moveNote, openPostNoteModal }
+  { moveNote, openPostNoteModal }
 )(StickyBoard);
