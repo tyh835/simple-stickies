@@ -1,4 +1,6 @@
+import uuid from 'uuid/v4';
 import {
+  DISMISS_ERROR,
   LOADING_START,
   LOADING_END,
   LOADING_ERROR,
@@ -15,6 +17,11 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case DISMISS_ERROR:
+      return {
+        ...state,
+        errors: state.errors.filter(error => error.key !== payload)
+      };
     case LOADING_START:
       return {
         ...state,
@@ -28,7 +35,13 @@ export default (state = initialState, { type, payload }) => {
     case LOADING_ERROR:
       return {
         ...state,
-        errors: [...state.errors, payload]
+        errors: [
+          ...state.errors,
+          {
+            message: payload,
+            key: uuid()
+          }
+        ]
       };
     case SAVE_START:
       return {
@@ -43,7 +56,13 @@ export default (state = initialState, { type, payload }) => {
     case SAVE_ERROR:
       return {
         ...state,
-        errors: [...state.errors, payload]
+        errors: [
+          ...state.errors,
+          {
+            message: payload,
+            key: uuid()
+          }
+        ]
       };
     default:
       return state;

@@ -1,4 +1,5 @@
 // Async Action Types
+export const DISMISS_ERROR = 'DISMISS_ERROR';
 export const LOADING_START = 'LOADING_START';
 export const LOADING_END = 'LOADING_END';
 export const LOADING_ERROR = 'LOADING_ERROR';

@@ -34,6 +34,7 @@ export const deleteNote = id => async dispatch => {
       throw new Error('Failed to delete note, please try again.');
     }
   } catch (err) {
+    dispatch({ type: CLOSE_MODAL });
     dispatch({ type: LOADING_ERROR, payload: err.message });
   }
   setTimeout(() => dispatch({ type: LOADING_END }), 1400);
@@ -68,6 +69,7 @@ export const postNote = (e, note) => async dispatch => {
     dispatch({ type: ADD_NOTE, payload: response.data });
     dispatch({ type: CLEAR_NEW_NOTE });
   } catch (err) {
+    dispatch({ type: CLOSE_MODAL });
     dispatch({ type: LOADING_ERROR, payload: err.message });
   }
   setTimeout(() => dispatch({ type: LOADING_END }), 1400);
