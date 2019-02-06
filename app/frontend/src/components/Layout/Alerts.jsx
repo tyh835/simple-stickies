@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { dismissError } from '../../actions';
 
 const Alerts = ({ dismissError, errors }) => {
@@ -13,6 +14,11 @@ const Alerts = ({ dismissError, errors }) => {
       ))}
     </div>
   );
+};
+
+Alerts.propTypes = {
+  dismissError: PropTypes.func.isRequired,
+  errors: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
