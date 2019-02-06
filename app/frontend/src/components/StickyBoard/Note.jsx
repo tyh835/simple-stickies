@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { DragSource } from 'react-dnd';
@@ -6,8 +6,7 @@ import { getEmptyImage } from 'react-dnd-html5-backend';
 import { openEditNoteModal } from '../../actions';
 import { STICKY_NOTE } from './type';
 
-const getStyles = props => {
-  const { note, isDragging } = props;
+const getStyles = ({ note, isDragging }) => {
   const { positionX, positionY } = note;
   const transform = `translate3d(${positionX}px, ${positionY}px, 0)`;
 
@@ -19,42 +18,42 @@ const getStyles = props => {
   };
 };
 
-class Note extends Component {
-  componentDidMount() {
-    const { connectDragPreview } = this.props;
-    if (connectDragPreview) {
-      connectDragPreview(getEmptyImage(), {
-        captureDraggingState: true
-      });
-    }
-  }
+const Note = ({
+  connectDragPreview,
+  connectDragSource,
+  isDragging,
+  note,
+  openEditNoteModal
+}) => {
+  useEffect(() => {
+    connectDragPreview(getEmptyImage(), {
+      captureDraggingState: true
+    });
+  });
 
-  render() {
-    const { connectDragSource, note, openEditNoteModal } = this.props;
-
-    return connectDragSource(
-      <div
-        className="box"
-        style={getStyles(this.props)}
-        onDoubleClick={() => openEditNoteModal(note.id)}
-      >
-        <article className="media">
-          <div className="media-content">
-            <div className="content">
-              <p style={{ cursor: 'pointer' }}>
-                <strong>{note.title}</strong>
-                <br />
-                {note.content}
-              </p>
-            </div>
+  return connectDragSource(
+    <div
+      className="box"
+      style={getStyles({ note, isDragging })}
+      onDoubleClick={() => openEditNoteModal(note.id)}
+    >
+      <article className="media">
+        <div className="media-content">
+          <div className="content">
+            <p style={{ cursor: 'pointer' }}>
+              <strong>{note.title}</strong>
+              <br />
+              {note.content}
+            </p>
           </div>
-        </article>
-      </div>
-    );
-  }
-}
+        </div>
+      </article>
+    </div>
+  );
+};
 
 Note.propTypes = {
+  connectDragPreview: PropTypes.func.isRequired,
   connectDragSource: PropTypes.func.isRequired,
   isDragging: PropTypes.bool.isRequired,
   note: PropTypes.object.isRequired
