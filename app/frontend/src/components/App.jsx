@@ -9,7 +9,7 @@ import { fetchNotes } from '../actions';
 const App = ({ fetchNotes, showModal, modalType }) => {
   useEffect(() => {
     setTimeout(fetchNotes, 0);
-  });
+  }, []);
 
   return (
     <Layout>

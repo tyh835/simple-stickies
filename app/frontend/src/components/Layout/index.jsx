@@ -9,7 +9,6 @@ const Layout = ({ children }) => {
       <Alerts />
       <Header />
       <PageLoader />
-
       <div id="content">{children}</div>
     </>
   );

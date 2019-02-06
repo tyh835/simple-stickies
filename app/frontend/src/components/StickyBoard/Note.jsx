@@ -29,7 +29,7 @@ const Note = ({
     connectDragPreview(getEmptyImage(), {
       captureDraggingState: true
     });
-  });
+  }, []);
 
   return connectDragSource(
     <div
