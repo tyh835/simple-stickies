@@ -24,7 +24,7 @@ export const loadUser = () => async dispatch => {
       dispatch({ type: AUTH_SUCCESS, payload: { user: response.data, token } });
     } catch (err) {
       localStorage.removeItem('token');
-      const message = 'Your session has expired. Please log in again';
+      const message = 'Your session has expired. Please log in again.';
       dispatch({ type: AUTH_ERROR, payload: message });
     }
   }

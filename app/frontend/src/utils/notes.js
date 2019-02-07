@@ -12,7 +12,7 @@ export const getAuthConfig = getState => {
 
 const UNAUTHORIZED = 'Request failed with status code 401';
 const UNAUTHORIZED_MESSAGE =
-  'Sorry, you need to be logged into perform this action';
+  'Sorry, you need to be logged in to perform this action.';
 
 export const handleNotesError = (dispatch, err) => {
   const { message } = err;

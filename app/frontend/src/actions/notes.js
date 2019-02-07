@@ -33,11 +33,8 @@ export const deleteNote = id => async (dispatch, getState) => {
 
   try {
     const response = await axios.delete(`/api/notes/${id}/`, config);
-    if (response.status === 204) {
-      dispatch({ type: DELETE_NOTE, payload: id });
-    } else {
-      throw new Error('Failed to delete note, please try again.');
-    }
+    const success = response.status === 204;
+    if (success) dispatch({ type: DELETE_NOTE, payload: id });
   } catch (err) {
     handleNotesError(dispatch, err);
   }
