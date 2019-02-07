@@ -4,12 +4,19 @@ import PropTypes from 'prop-types';
 import Layout from './Layout';
 import StickyBoard from './StickyBoard';
 import { renderModal } from './Modals';
-import { fetchNotes } from '../actions';
+import { loadUser, fetchNotes } from '../actions';
 
-const App = ({ fetchNotes, isAuthenticated, showModal, modalType }) => {
+const App = ({
+  fetchNotes,
+  isAuthenticated,
+  loadUser,
+  showModal,
+  modalType
+}) => {
   useEffect(() => {
-    if (isAuthenticated) setTimeout(fetchNotes, 0);
-  }, []);
+    if (isAuthenticated) fetchNotes();
+    else setTimeout(loadUser, 0);
+  }, [isAuthenticated]);
 
   return (
     <Layout>
@@ -33,5 +40,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchNotes }
+  { fetchNotes, loadUser }
 )(App);
