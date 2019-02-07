@@ -17,7 +17,7 @@ const initialState = {
     password1: '',
     password2: ''
   },
-  token: localStorage.getItem('token'),
+  token: null,
   user: null
 };
 

@@ -9,32 +9,52 @@ import {
   UPDATE_REGISTRATION_FORM
 } from '../actionTypes';
 
-export const loadUser = () => async (dispatch, getState) => {
-  dispatch({ type: LOADING_START });
-  dispatch({ type: CLOSE_MODAL });
+export const loadUser = () => async dispatch => {
+  const token = window.localStorage.getItem('token');
 
-  const { token } = getState().auth;
+  if (token) {
+    const config = {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    };
+
+    try {
+      const response = await axios.get('/api/auth/user', config);
+      dispatch({ type: AUTH_SUCCESS, payload: { user: response.data, token } });
+    } catch (err) {
+      localStorage.removeItem('token');
+      const message = 'Your session has expired. Please log in again';
+      dispatch({ type: AUTH_ERROR, payload: message });
+    }
+  }
+};
+
+export const login = e => async (dispatch, getState) => {
+  e.preventDefault();
+  const { username, password } = getState().auth.loginForm;
+
+  const data = JSON.stringify({ username, password });
   const config = {
     headers: {
       'Content-Type': 'application/json'
     }
   };
 
-  if (token) {
-    config.header['Authorization'] = `Token ${token}`;
-  }
+  dispatch({ type: LOADING_START });
+  dispatch({ type: CLOSE_MODAL });
 
   try {
-    const response = await axios.get('/api/auth/user', config);
-    dispatch({ type: AUTH_SUCCESS, payload: response.data });
+    const response = await axios.post('/api/auth/login', data, config);
+    const { user, token } = response.data;
+    dispatch({ type: AUTH_SUCCESS, payload: { user, token } });
+    window.localStorage.setItem('token', token);
   } catch (err) {
-    localStorage.removeItem('token');
-    dispatch({ type: AUTH_ERROR, payload: err.message });
+    const message = 'Failed to login. Please try again';
+    dispatch({ type: AUTH_ERROR, payload: message });
   }
 
-  setTimeout(() => {
-    dispatch({ type: LOADING_END });
-  }, 1400);
+  setTimeout(() => dispatch({ type: LOADING_END }), 1400);
 };
 
 export const updateLoginForm = e => {

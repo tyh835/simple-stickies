@@ -1,6 +1,11 @@
 // Import Actions
 import { dismissError } from './async';
-import { loadUser, updateLoginForm, updateRegistrationForm } from './auth';
+import {
+  loadUser,
+  login,
+  updateLoginForm,
+  updateRegistrationForm
+} from './auth';
 import { toggleMenu } from './menu';
 import {
   closeModal,
@@ -21,7 +26,7 @@ import {
 
 // Export Actions
 export { dismissError };
-export { loadUser, updateLoginForm, updateRegistrationForm };
+export { loadUser, login, updateLoginForm, updateRegistrationForm };
 export { toggleMenu };
 export {
   closeModal,

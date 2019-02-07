@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from './Modal';
-import { closeModal, updateLoginForm } from '../../actions';
+import { closeModal, login, updateLoginForm } from '../../actions';
 
-const LoginModal = ({ closeModal, loginForm, updateLoginForm }) => {
+const LoginModal = ({ closeModal, login, loginForm, updateLoginForm }) => {
   const { username, password } = loginForm;
 
   return (
@@ -15,7 +15,7 @@ const LoginModal = ({ closeModal, loginForm, updateLoginForm }) => {
           <button className="delete" onClick={closeModal} aria-label="close" />
         </header>
         <section className="modal-card-body">
-          <form>
+          <form onSubmit={e => login(e)}>
             <div className="field">
               <label className="label">Username</label>
               <div className="control">
@@ -55,7 +55,10 @@ const LoginModal = ({ closeModal, loginForm, updateLoginForm }) => {
 };
 
 LoginModal.propTypes = {
-  closeModal: PropTypes.func.isRequired
+  closeModal: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  loginForm: PropTypes.object.isRequired,
+  updateLoginForm: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -64,5 +67,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { closeModal, updateLoginForm }
+  { closeModal, login, updateLoginForm }
 )(LoginModal);
