@@ -11,7 +11,9 @@ const initialState = {
     email: '',
     password1: '',
     password2: ''
-  }
+  },
+  token: localStorage.getItem('token'),
+  user: null
 };
 
 export default (state = initialState, { type, payload }) => {
