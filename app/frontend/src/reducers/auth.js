@@ -1,4 +1,9 @@
-import { UPDATE_LOGIN_FORM, UPDATE_REGISTRATION_FORM } from '../actionTypes';
+import {
+  AUTH_ERROR,
+  AUTH_SUCCESS,
+  UPDATE_LOGIN_FORM,
+  UPDATE_REGISTRATION_FORM
+} from '../actionTypes';
 
 const initialState = {
   isAuthenticated: false,
@@ -18,6 +23,20 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case AUTH_ERROR:
+      return {
+        ...state,
+        isAuthenticated: false,
+        token: null,
+        user: null
+      };
+    case AUTH_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        token: payload.token,
+        user: payload.user
+      };
     case UPDATE_LOGIN_FORM:
       return {
         ...state,
