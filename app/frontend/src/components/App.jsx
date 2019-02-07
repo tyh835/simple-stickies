@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Layout from './Layout';
 import StickyBoard from './StickyBoard';
@@ -20,6 +21,7 @@ const App = ({ fetchNotes, showModal, modalType }) => {
 };
 
 App.propTypes = {
+  fetchNotes: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,
   modalType: PropTypes.string.isRequired
 };
