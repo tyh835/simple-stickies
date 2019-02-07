@@ -28,6 +28,8 @@ const App = ({
 
 App.propTypes = {
   fetchNotes: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  loadUser: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,
   modalType: PropTypes.string.isRequired
 };

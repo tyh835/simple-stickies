@@ -10,17 +10,13 @@ export const getAuthConfig = getState => {
   };
 };
 
-const UNAUTHORIZED = 'Request failed with status code 401';
-const UNAUTHORIZED_MESSAGE =
-  'Sorry, you need to be logged in to perform this action.';
+const UNAUTHORIZED = 'Sorry, you need to be logged in to perform this action.';
 
 export const handleNotesError = (dispatch, err) => {
-  const { message } = err;
-
-  if (message === UNAUTHORIZED) {
-    dispatch({ type: AUTH_ERROR, payload: UNAUTHORIZED_MESSAGE });
+  if (err.response.status === 401) {
+    dispatch({ type: AUTH_ERROR, payload: UNAUTHORIZED });
   } else {
-    dispatch({ type: LOADING_ERROR, payload: message });
+    dispatch({ type: LOADING_ERROR, payload: err.message });
   }
 };
 

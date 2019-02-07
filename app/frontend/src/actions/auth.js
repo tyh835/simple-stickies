@@ -24,8 +24,8 @@ export const loadUser = () => async dispatch => {
       dispatch({ type: AUTH_SUCCESS, payload: { user: response.data, token } });
     } catch (err) {
       localStorage.removeItem('token');
-      const message = 'Your session has expired. Please log in again.';
-      dispatch({ type: AUTH_ERROR, payload: message });
+      const ERROR = 'Your session has expired. Please log in again.';
+      dispatch({ type: AUTH_ERROR, payload: ERROR });
     }
   }
 };
@@ -50,8 +50,8 @@ export const login = e => async (dispatch, getState) => {
     dispatch({ type: AUTH_SUCCESS, payload: { user, token } });
     window.localStorage.setItem('token', token);
   } catch (err) {
-    const message = 'Failed to login. Please try again';
-    dispatch({ type: AUTH_ERROR, payload: message });
+    const ERROR = 'Failed to login. Please try again';
+    dispatch({ type: AUTH_ERROR, payload: ERROR });
   }
 
   setTimeout(() => dispatch({ type: LOADING_END }), 1400);
