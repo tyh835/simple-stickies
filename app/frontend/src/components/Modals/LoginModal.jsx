@@ -1,0 +1,68 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Modal from './Modal';
+import { closeModal, updateLoginForm } from '../../actions';
+
+const LoginModal = ({ closeModal, loginForm, updateLoginForm }) => {
+  const { username, password } = loginForm;
+
+  return (
+    <Modal>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <p className="modal-card-title">Login</p>
+          <button className="delete" onClick={closeModal} aria-label="close" />
+        </header>
+        <section className="modal-card-body">
+          <form>
+            <div className="field">
+              <label className="label">Username</label>
+              <div className="control">
+                <input
+                  type="text"
+                  name="username"
+                  value={username}
+                  className="input"
+                  onChange={updateLoginForm}
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Password</label>
+              <div className="control">
+                <input
+                  type="password"
+                  name="password"
+                  value={password}
+                  className="input"
+                  onChange={updateLoginForm}
+                />
+              </div>
+            </div>
+            <div className="field is-centered">
+              <div className="control">
+                <button className="button is-primary" type="submit">
+                  Login
+                </button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </Modal>
+  );
+};
+
+LoginModal.propTypes = {
+  closeModal: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  loginForm: state.auth.loginForm
+});
+
+export default connect(
+  mapStateToProps,
+  { closeModal, updateLoginForm }
+)(LoginModal);

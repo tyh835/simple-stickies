@@ -7,6 +7,10 @@ export const SAVE_START = 'SAVE_START';
 export const SAVE_END = 'SAVE_END';
 export const SAVE_ERROR = 'SAVE_ERROR';
 
+// Auth Action Types
+export const UPDATE_LOGIN_FORM = 'UPDATE_LOGIN_FORM';
+export const UPDATE_REGISTRATION_FORM = 'UPDATE_REGISTRATION_FORM';
+
 // Menu Action Types
 export const TOGGLE_MENU = 'TOGGLE_MENU';
 
@@ -23,5 +27,3 @@ export const SET_NOTES = 'SET_NOTES';
 export const SAVE_NOTE = 'SAVE_NOTE';
 export const UPDATE_NOTE = 'UPDATE_NOTE';
 export const UPDATE_NEW_NOTE = 'UPDATE_NEW_NOTE';
-
-// User Action Types

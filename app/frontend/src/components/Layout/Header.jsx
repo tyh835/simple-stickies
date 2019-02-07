@@ -1,11 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { saveNotes, toggleMenu } from '../../actions';
+import {
+  openLoginModal,
+  openRegistrationModal,
+  saveNotes,
+  toggleMenu
+} from '../../actions';
 
 const Header = ({
   currentNotes,
   cachedNotes,
+  openLoginModal,
+  openRegistrationModal,
   showMenu,
   saving,
   saveNotes,
@@ -38,20 +45,25 @@ const Header = ({
         <div className={`navbar-menu ${showMenu ? 'is-active' : ''}`}>
           <div className="navbar-end">
             <div className="navbar-item is-centered">
-              <a className="button is-primary is-outlined">
+              <button
+                className="button is-primary is-outlined"
+                onClick={openRegistrationModal}
+              >
                 <strong>Sign up</strong>
-              </a>
+              </button>
             </div>
             <div className="navbar-item is-centered">
-              <a className="button is-light">Log in</a>
+              <button className="button is-light" onClick={openLoginModal}>
+                Log in
+              </button>
             </div>
             <div className="navbar-item is-centered">
-              <a
+              <button
                 className={`button is-primary ${saving ? 'is-loading' : ''}`}
                 onClick={e => saveNotes(e, currentNotes, cachedNotes)}
               >
                 <strong>Save Changes</strong>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -61,6 +73,12 @@ const Header = ({
 };
 
 Header.propTypes = {
+  currentNotes: PropTypes.array,
+  cachedNotes: PropTypes.array,
+  openLoginModal: PropTypes.func.isRequired,
+  openRegistrationModal: PropTypes.func.isRequired,
+  saving: PropTypes.bool.isRequired,
+  saveNotes: PropTypes.func.isRequired,
   showMenu: PropTypes.bool.isRequired,
   toggleMenu: PropTypes.func.isRequired
 };
@@ -74,5 +92,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { saveNotes, toggleMenu }
+  { openLoginModal, openRegistrationModal, saveNotes, toggleMenu }
 )(Header);

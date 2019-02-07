@@ -6,9 +6,9 @@ import StickyBoard from './StickyBoard';
 import { renderModal } from './Modals';
 import { fetchNotes } from '../actions';
 
-const App = ({ fetchNotes, showModal, modalType }) => {
+const App = ({ fetchNotes, isAuthenticated, showModal, modalType }) => {
   useEffect(() => {
-    setTimeout(fetchNotes, 0);
+    if (isAuthenticated) setTimeout(fetchNotes, 0);
   }, []);
 
   return (
@@ -26,6 +26,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
   showModal: state.modal.showModal,
   modalType: state.modal.modalType
 });

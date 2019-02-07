@@ -1,7 +1,14 @@
 // Import Actions
 import { dismissError } from './async';
+import { updateLoginForm, updateRegistrationForm } from './auth';
 import { toggleMenu } from './menu';
-import { closeModal, openEditNoteModal, openPostNoteModal } from './modals';
+import {
+  closeModal,
+  openEditNoteModal,
+  openLoginModal,
+  openPostNoteModal,
+  openRegistrationModal
+} from './modals';
 import {
   deleteNote,
   fetchNotes,
@@ -14,8 +21,15 @@ import {
 
 // Export Actions
 export { dismissError };
+export { updateLoginForm, updateRegistrationForm };
 export { toggleMenu };
-export { closeModal, openEditNoteModal, openPostNoteModal };
+export {
+  closeModal,
+  openEditNoteModal,
+  openLoginModal,
+  openPostNoteModal,
+  openRegistrationModal
+};
 export {
   deleteNote,
   fetchNotes,
