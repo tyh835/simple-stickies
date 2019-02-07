@@ -1,8 +1,9 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from backend.serializers import NoteSerializer
 
 
 class NoteViewSet(viewsets.ModelViewSet):
+    """ViewSet REST API for notes"""
     serializer_class = NoteSerializer
 
     def get_queryset(self):
