@@ -3,7 +3,7 @@ from backend.serializers import NoteSerializer
 
 
 class NoteViewSet(viewsets.ModelViewSet):
-    """ViewSet REST API for notes"""
+    """Notes ViewSet REST API"""
     serializer_class = NoteSerializer
 
     def get_queryset(self):

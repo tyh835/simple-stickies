@@ -23,7 +23,7 @@ class RegisterAPI(generics.GenericAPIView):
 
 
 class LoginAPI(generics.GenericAPIView):
-    """Registration REST API (POST only)"""
+    """Registration API (POST only)"""
     permission_classes = (permissions.AllowAny,)
     serializer_class = LoginSerializer
 
@@ -40,6 +40,7 @@ class LoginAPI(generics.GenericAPIView):
 
 
 class UserAPI(generics.RetrieveAPIView):
+    """User API (GET only w/ token)"""
     serializer_class = UserSerializer
 
     def get_object(self):
