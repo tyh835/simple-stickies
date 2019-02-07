@@ -1,5 +1,6 @@
 import uuid from 'uuid/v4';
 import {
+  AUTH_ERROR,
   DISMISS_ERROR,
   LOADING_START,
   LOADING_END,
@@ -17,6 +18,17 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case AUTH_ERROR:
+      return {
+        ...state,
+        errors: [
+          ...state.errors,
+          {
+            message: payload,
+            key: uuid()
+          }
+        ]
+      };
     case DISMISS_ERROR:
       return {
         ...state,

@@ -9,8 +9,6 @@ import {
 } from '../../actions';
 
 const Header = ({
-  currentNotes,
-  cachedNotes,
   openLoginModal,
   openRegistrationModal,
   showMenu,
@@ -60,7 +58,7 @@ const Header = ({
             <div className="navbar-item is-centered">
               <button
                 className={`button is-primary ${saving ? 'is-loading' : ''}`}
-                onClick={e => saveNotes(e, currentNotes, cachedNotes)}
+                onClick={e => saveNotes(e)}
               >
                 <strong>Save Changes</strong>
               </button>
@@ -73,8 +71,6 @@ const Header = ({
 };
 
 Header.propTypes = {
-  currentNotes: PropTypes.array,
-  cachedNotes: PropTypes.array,
   openLoginModal: PropTypes.func.isRequired,
   openRegistrationModal: PropTypes.func.isRequired,
   saving: PropTypes.bool.isRequired,
@@ -84,8 +80,6 @@ Header.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  currentNotes: state.notes.currentNotes,
-  cachedNotes: state.notes.cachedNotes,
   showMenu: state.menu.showMenu,
   saving: state.async.saving
 });

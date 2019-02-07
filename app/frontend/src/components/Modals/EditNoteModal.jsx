@@ -5,16 +5,14 @@ import Modal from './Modal';
 import { closeModal, deleteNote, saveNotes, updateNote } from '../../actions';
 
 const EditNoteModal = ({
-  currentNotes,
-  cachedNotes,
   closeModal,
   deleteNote,
-  noteId,
+  note,
   saveNotes,
   saving,
   updateNote
 }) => {
-  const { title, content } = currentNotes.find(note => note.id === noteId);
+  const { title, content } = note;
 
   return (
     <Modal>
@@ -24,7 +22,7 @@ const EditNoteModal = ({
           <button className="delete" onClick={closeModal} aria-label="close" />
         </header>
         <section className="modal-card-body">
-          <form onSubmit={e => saveNotes(e, currentNotes, cachedNotes)}>
+          <form onSubmit={e => saveNotes(e)}>
             <div className="field">
               <label className="label">Title</label>
               <div className="control">
@@ -33,7 +31,7 @@ const EditNoteModal = ({
                   name="title"
                   value={title}
                   className="input"
-                  onChange={e => updateNote(e, noteId)}
+                  onChange={e => updateNote(e, note.id)}
                 />
               </div>
             </div>
@@ -45,7 +43,7 @@ const EditNoteModal = ({
                   name="content"
                   value={content}
                   className="textarea"
-                  onChange={e => updateNote(e, noteId)}
+                  onChange={e => updateNote(e, note.id)}
                 />
               </div>
             </div>
@@ -59,7 +57,7 @@ const EditNoteModal = ({
                 </button>
                 <button
                   className="button is-danger is-outlined has-mx-3"
-                  onClick={() => deleteNote(noteId)}
+                  onClick={() => deleteNote(note.id)}
                 >
                   Delete Note
                 </button>
@@ -73,19 +71,15 @@ const EditNoteModal = ({
 };
 
 EditNoteModal.propTypes = {
-  cachedNotes: PropTypes.array.isRequired,
-  currentNotes: PropTypes.array.isRequired,
+  note: PropTypes.object.isRequired,
   closeModal: PropTypes.func.isRequired,
   deleteNote: PropTypes.func.isRequired,
-  noteId: PropTypes.number.isRequired,
   saveNotes: PropTypes.func.isRequired,
   updateNote: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  currentNotes: state.notes.currentNotes,
-  cachedNotes: state.notes.cachedNotes,
-  noteId: state.modal.noteId,
+  note: state.notes.currentNotes.find(note => note.id === state.modal.noteId),
   saving: state.async.saving
 });
 

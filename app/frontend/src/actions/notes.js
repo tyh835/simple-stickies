@@ -73,8 +73,9 @@ export const postNote = (e, note) => async dispatch => {
   setTimeout(() => dispatch({ type: LOADING_END }), 1400);
 };
 
-export const saveNotes = (e, currentNotes, cachedNotes) => dispatch => {
+export const saveNotes = e => (dispatch, getState) => {
   e.preventDefault();
+  const { currentNotes, cachedNotes } = getState().notes;
   dispatch({ type: SAVE_START });
   currentNotes.forEach(async (note, i) => {
     if (noteHasChanges(note, cachedNotes[i])) {
