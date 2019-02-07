@@ -11,7 +11,7 @@ const Board = ({ connectDropTarget, notes, openPostNoteModal }) => {
     <section className="section">
       <div className="container board" style={{ overflowY: 'hidden' }}>
         {notes.map(note => (
-          <Note note={note} key={note.id || note.tempId} />
+          <Note note={note} key={note.id} />
         ))}
       </div>
       <div className="container is-centered">
