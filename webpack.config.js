@@ -1,5 +1,12 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = {
-  entry: ["@babel/polyfill", `${__dirname}/app/frontend/src/index.jsx`],
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'style.css',
+    })
+  ],
+  entry: ['@babel/polyfill', `${__dirname}/app/frontend/src/index.jsx`],
   module: {
     rules: [
       {
@@ -12,8 +19,12 @@ module.exports = {
         use: ['file-loader']
       },
       {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+           MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ]
       }
     ]
   },
