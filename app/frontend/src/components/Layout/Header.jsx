@@ -9,6 +9,7 @@ import {
 } from '../../actions';
 
 const Header = ({
+  isAuthenticated,
   openLoginModal,
   openRegistrationModal,
   showMenu,
@@ -39,31 +40,40 @@ const Header = ({
             <span aria-hidden="true" />
           </a>
         </div>
-
         <div className={`navbar-menu ${showMenu ? 'is-active' : ''}`}>
-          <div className="navbar-end">
-            <div className="navbar-item is-centered">
-              <button
-                className="button is-primary is-outlined"
-                onClick={openRegistrationModal}
-              >
-                <strong>Sign up</strong>
-              </button>
+          {!isAuthenticated ? (
+            <div className="navbar-end">
+              <div className="navbar-item is-centered">
+                <button
+                  className="button is-primary is-outlined"
+                  onClick={openRegistrationModal}
+                >
+                  <strong>Sign up</strong>
+                </button>
+              </div>
+              <div className="navbar-item is-centered">
+                <button className="button is-light" onClick={openLoginModal}>
+                  Log in
+                </button>
+              </div>
             </div>
-            <div className="navbar-item is-centered">
-              <button className="button is-light" onClick={openLoginModal}>
-                Log in
-              </button>
+          ) : (
+            <div className="navbar-end">
+              <div className="navbar-item is-centered">
+                <button
+                  className={`button is-primary ${saving ? 'is-loading' : ''}`}
+                  onClick={e => saveNotes(e)}
+                >
+                  <strong>Save Changes</strong>
+                </button>
+              </div>
+              <div className="navbar-item is-centered">
+                <button className="button is-danger is-outlined">
+                  <strong>Logout</strong>
+                </button>
+              </div>
             </div>
-            <div className="navbar-item is-centered">
-              <button
-                className={`button is-primary ${saving ? 'is-loading' : ''}`}
-                onClick={e => saveNotes(e)}
-              >
-                <strong>Save Changes</strong>
-              </button>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </nav>
@@ -71,6 +81,7 @@ const Header = ({
 };
 
 Header.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
   openLoginModal: PropTypes.func.isRequired,
   openRegistrationModal: PropTypes.func.isRequired,
   saving: PropTypes.bool.isRequired,
@@ -80,6 +91,7 @@ Header.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
   showMenu: state.menu.showMenu,
   saving: state.async.saving
 });
