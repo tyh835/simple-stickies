@@ -11,7 +11,30 @@ import {
 } from '../actionTypes';
 
 const initialState = {
-  currentNotes: [],
+  currentNotes: [
+    {
+      id: 1,
+      title: 'Welcome to Simple Stickys!',
+      content: 'To start, simply sign up and begin creating notes!',
+      positionX: 32,
+      positionY: 32
+    },
+    {
+      id: 2,
+      title: 'Editing notes',
+      content: 'To edit, simply double click on the note you want to edit.',
+      positionX: 362,
+      positionY: 32
+    },
+    {
+      id: 3,
+      title: 'Draggable!',
+      content:
+        'Simply drag and drop the sticky notes to place them where you want them! Make sure to save your changes.',
+      positionX: 692,
+      positionY: 32
+    }
+  ],
   cachedNotes: [],
   newNote: {
     title: '',
