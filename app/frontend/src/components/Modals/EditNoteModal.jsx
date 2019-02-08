@@ -53,7 +53,7 @@ const EditNoteModal = ({
                   className={`button is-primary ${saving ? 'is-loading' : ''}`}
                   type="submit"
                 >
-                  Save Note
+                  <strong>Save Note</strong>
                 </button>
                 <button
                   className="button is-danger is-outlined has-mx-3"

@@ -43,7 +43,7 @@ const PostNoteModal = ({ closeModal, newNote, postNote, updateNewNote }) => {
             <div className="field is-centered">
               <div className="control">
                 <button className="button is-primary" type="submit">
-                  Save Note
+                  <strong>Save Note</strong>
                 </button>
               </div>
             </div>

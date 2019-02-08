@@ -68,9 +68,7 @@ const Header = ({
                 </button>
               </div>
               <div className="navbar-item is-centered">
-                <button className="button is-danger is-outlined">
-                  <strong>Logout</strong>
-                </button>
+                <button className="button is-danger is-outlined">Logout</button>
               </div>
             </div>
           )}

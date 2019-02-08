@@ -71,7 +71,7 @@ const RegistrationModal = ({
             <div className="field is-centered">
               <div className="control">
                 <button className="button is-primary" type="submit">
-                  Sign Up
+                  <strong>Sign Up</strong>
                 </button>
               </div>
             </div>

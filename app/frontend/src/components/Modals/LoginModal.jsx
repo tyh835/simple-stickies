@@ -43,7 +43,7 @@ const LoginModal = ({ closeModal, login, loginForm, updateLoginForm }) => {
             <div className="field is-centered">
               <div className="control">
                 <button className="button is-primary" type="submit">
-                  Login
+                  <strong>Login</strong>
                 </button>
               </div>
             </div>
