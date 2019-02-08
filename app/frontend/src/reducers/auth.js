@@ -1,6 +1,7 @@
 import {
   AUTH_ERROR,
   AUTH_SUCCESS,
+  LOGOUT_SUCCESS,
   UPDATE_LOGIN_FORM,
   UPDATE_REGISTRATION_FORM
 } from '../actionTypes';
@@ -36,6 +37,13 @@ export default (state = initialState, { type, payload }) => {
         isAuthenticated: true,
         token: payload.token,
         user: payload.user
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: false,
+        token: null,
+        user: null
       };
     case UPDATE_LOGIN_FORM:
       return {

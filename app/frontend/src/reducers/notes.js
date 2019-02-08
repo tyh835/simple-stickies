@@ -6,7 +6,8 @@ import {
   SAVE_NOTE,
   SET_NOTES,
   UPDATE_NOTE,
-  UPDATE_NEW_NOTE
+  UPDATE_NEW_NOTE,
+  LOGOUT_SUCCESS
 } from '../actionTypes';
 
 const initialState = {
@@ -87,6 +88,8 @@ export default (state = initialState, { type, payload }) => {
           [payload.name]: payload.value
         }
       };
+    case LOGOUT_SUCCESS:
+      return initialState;
     default:
       return state;
   }

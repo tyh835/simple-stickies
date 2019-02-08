@@ -10,6 +10,7 @@ export const SAVE_ERROR = 'SAVE_ERROR';
 // Auth Action Types
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_ERROR = 'AUTH_ERROR';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const UPDATE_LOGIN_FORM = 'UPDATE_LOGIN_FORM';
 export const UPDATE_REGISTRATION_FORM = 'UPDATE_REGISTRATION_FORM';
 

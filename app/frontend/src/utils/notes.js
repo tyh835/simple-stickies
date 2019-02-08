@@ -1,15 +1,5 @@
 import { AUTH_ERROR, LOADING_ERROR } from '../actionTypes';
 
-export const getAuthConfig = getState => {
-  const { token } = getState().auth;
-  return {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Token ${token}`
-    }
-  };
-};
-
 const UNAUTHORIZED = 'Sorry, you need to be logged in to perform this action.';
 
 export const handleNotesError = (dispatch, err) => {

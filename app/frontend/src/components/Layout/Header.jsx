@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
+  logout,
   openLoginModal,
   openRegistrationModal,
   saveNotes,
@@ -10,6 +11,7 @@ import {
 
 const Header = ({
   isAuthenticated,
+  logout,
   openLoginModal,
   openRegistrationModal,
   showMenu,
@@ -68,7 +70,12 @@ const Header = ({
                 </button>
               </div>
               <div className="navbar-item is-centered">
-                <button className="button is-danger is-outlined">Logout</button>
+                <button
+                  className="button is-danger is-outlined"
+                  onClick={logout}
+                >
+                  Logout
+                </button>
               </div>
             </div>
           )}
@@ -80,6 +87,7 @@ const Header = ({
 
 Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
   openLoginModal: PropTypes.func.isRequired,
   openRegistrationModal: PropTypes.func.isRequired,
   saving: PropTypes.bool.isRequired,
@@ -96,5 +104,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { openLoginModal, openRegistrationModal, saveNotes, toggleMenu }
+  { logout, openLoginModal, openRegistrationModal, saveNotes, toggleMenu }
 )(Header);

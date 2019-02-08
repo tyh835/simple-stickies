@@ -4,10 +4,13 @@ import {
   AUTH_ERROR,
   CLOSE_MODAL,
   LOADING_START,
+  LOADING_ERROR,
   LOADING_END,
+  LOGOUT_SUCCESS,
   UPDATE_LOGIN_FORM,
   UPDATE_REGISTRATION_FORM
 } from '../actionTypes';
+import { getAuthConfig } from '../utils/auth';
 
 export const loadUser = () => async dispatch => {
   const token = window.localStorage.getItem('token');
@@ -23,7 +26,7 @@ export const loadUser = () => async dispatch => {
       const response = await axios.get('/api/auth/user', config);
       dispatch({ type: AUTH_SUCCESS, payload: { user: response.data, token } });
     } catch (err) {
-      localStorage.removeItem('token');
+      window.localStorage.removeItem('token');
       const ERROR = 'Your session has expired. Please log in again.';
       dispatch({ type: AUTH_ERROR, payload: ERROR });
     }
@@ -52,6 +55,26 @@ export const login = e => async (dispatch, getState) => {
   } catch (err) {
     const ERROR = 'Failed to login. Please try again';
     dispatch({ type: AUTH_ERROR, payload: ERROR });
+  }
+
+  setTimeout(() => dispatch({ type: LOADING_END }), 1400);
+};
+
+export const logout = () => async (dispatch, getState) => {
+  dispatch({ type: LOADING_START });
+
+  try {
+    const config = getAuthConfig(getState);
+    const response = await axios.post('/api/auth/logout', {}, config);
+
+    if (response.status === 204) {
+      dispatch({ type: LOGOUT_SUCCESS });
+      window.localStorage.removeItem('token');
+    }
+  } catch (err) {
+    console.log(err);
+    const ERROR = 'Failed to logout. Please try again';
+    dispatch({ type: LOADING_ERROR, payload: ERROR });
   }
 
   setTimeout(() => dispatch({ type: LOADING_END }), 1400);

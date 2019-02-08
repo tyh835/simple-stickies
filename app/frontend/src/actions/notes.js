@@ -14,11 +14,8 @@ import {
   SAVE_END,
   CLOSE_MODAL
 } from '../actionTypes';
-import {
-  getAuthConfig,
-  handleNotesError,
-  noteHasChanges
-} from '../utils/notes';
+import { handleNotesError, noteHasChanges } from '../utils/notes';
+import { getAuthConfig } from '../utils/auth';
 
 export const deleteNote = id => async (dispatch, getState) => {
   const confirmed = window.confirm(

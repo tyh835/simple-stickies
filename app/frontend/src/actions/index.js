@@ -3,6 +3,7 @@ import { dismissError } from './async';
 import {
   loadUser,
   login,
+  logout,
   updateLoginForm,
   updateRegistrationForm
 } from './auth';
@@ -26,7 +27,7 @@ import {
 
 // Export Actions
 export { dismissError };
-export { loadUser, login, updateLoginForm, updateRegistrationForm };
+export { loadUser, login, logout, updateLoginForm, updateRegistrationForm };
 export { toggleMenu };
 export {
   closeModal,
