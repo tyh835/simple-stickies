@@ -10,7 +10,7 @@ import {
 } from '../../actions';
 
 const Header = ({
-  isAuthenticated,
+  auth,
   logout,
   openLoginModal,
   openRegistrationModal,
@@ -19,8 +19,14 @@ const Header = ({
   saveNotes,
   toggleMenu
 }) => {
+  const { isAuthenticated, user } = auth;
+
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
+    <nav
+      className="navbar is-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
       <div className="container has-px-mobile-5 has-px-desktop-0">
         <div className="navbar-brand">
           <a className="navbar-item" href="https://bulma.io">
@@ -62,6 +68,9 @@ const Header = ({
           ) : (
             <div className="navbar-end">
               <div className="navbar-item is-centered">
+                <span className="welcome">Welcome, {user.username}!</span>
+              </div>
+              <div className="navbar-item is-centered">
                 <button
                   className={`button is-primary ${saving ? 'is-loading' : ''}`}
                   onClick={e => saveNotes(e)}
@@ -86,7 +95,7 @@ const Header = ({
 };
 
 Header.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
+  auth: PropTypes.object.isRequired,
   logout: PropTypes.func.isRequired,
   openLoginModal: PropTypes.func.isRequired,
   openRegistrationModal: PropTypes.func.isRequired,
@@ -97,7 +106,7 @@ Header.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  auth: state.auth,
   showMenu: state.menu.showMenu,
   saving: state.async.saving
 });

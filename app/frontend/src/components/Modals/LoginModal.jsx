@@ -18,7 +18,7 @@ const LoginModal = ({ closeModal, login, loginForm, updateLoginForm }) => {
           <form onSubmit={e => login(e)}>
             <div className="field">
               <label className="label">Username</label>
-              <div className="control">
+              <div className="control has-icons-left">
                 <input
                   type="text"
                   name="username"
@@ -26,11 +26,14 @@ const LoginModal = ({ closeModal, login, loginForm, updateLoginForm }) => {
                   className="input"
                   onChange={updateLoginForm}
                 />
+                <span className="icon is-small is-left">
+                  <i className="fas fa-user" />
+                </span>
               </div>
             </div>
             <div className="field">
               <label className="label">Password</label>
-              <div className="control">
+              <div className="control has-icons-left">
                 <input
                   type="password"
                   name="password"
@@ -38,6 +41,9 @@ const LoginModal = ({ closeModal, login, loginForm, updateLoginForm }) => {
                   className="input"
                   onChange={updateLoginForm}
                 />
+                <span className="icon is-small is-left">
+                  <i className="fas fa-lock" />
+                </span>
               </div>
             </div>
             <div className="field is-centered">

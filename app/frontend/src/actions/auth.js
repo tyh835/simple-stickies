@@ -80,6 +80,38 @@ export const logout = () => async (dispatch, getState) => {
   setTimeout(() => dispatch({ type: LOADING_END }), 1400);
 };
 
+export const register = e => async (dispatch, getState) => {
+  e.preventDefault();
+  const {
+    username,
+    email,
+    password,
+    password2
+  } = getState().auth.registrationForm;
+
+  const data = JSON.stringify({ username, email, password });
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  dispatch({ type: LOADING_START });
+  dispatch({ type: CLOSE_MODAL });
+
+  try {
+    const response = await axios.post('/api/auth/login', data, config);
+    const { user, token } = response.data;
+    dispatch({ type: AUTH_SUCCESS, payload: { user, token } });
+    window.localStorage.setItem('token', token);
+  } catch (err) {
+    const ERROR = 'Failed to login. Please try again';
+    dispatch({ type: AUTH_ERROR, payload: ERROR });
+  }
+
+  setTimeout(() => dispatch({ type: LOADING_END }), 1400);
+};
+
 export const updateLoginForm = e => {
   const { name, value } = e.target;
   return {

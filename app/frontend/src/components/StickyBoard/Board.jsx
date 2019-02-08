@@ -19,19 +19,6 @@ const Board = ({
           <Note note={note} key={note.id} />
         ))}
       </div>
-
-      <div
-        className="container is-centered"
-        style={{ visibility: isAuthenticated ? 'visible' : 'hidden' }}
-      >
-        <button
-          className="button is-primary"
-          onClick={openPostNoteModal}
-          type="submit"
-        >
-          <strong>Add new Sticky!</strong>
-        </button>
-      </div>
     </section>
   );
 };

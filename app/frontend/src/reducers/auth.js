@@ -15,7 +15,7 @@ const initialState = {
   registrationForm: {
     username: '',
     email: '',
-    password1: '',
+    password: '',
     password2: ''
   },
   token: null,

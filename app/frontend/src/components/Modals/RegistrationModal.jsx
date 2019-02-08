@@ -22,7 +22,7 @@ const RegistrationModal = ({
           <form>
             <div className="field">
               <label className="label">Username</label>
-              <div className="control">
+              <div className="control has-icons-left">
                 <input
                   type="text"
                   name="username"
@@ -30,23 +30,29 @@ const RegistrationModal = ({
                   className="input"
                   onChange={updateRegistrationForm}
                 />
+                <span className="icon is-small is-left">
+                  <i className="fas fa-user" />
+                </span>
               </div>
             </div>
             <div className="field">
               <label className="label">Email</label>
-              <div className="control">
+              <div className="control has-icons-left">
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   value={email}
                   className="input"
                   onChange={updateRegistrationForm}
                 />
+                <span className="icon is-small is-left">
+                  <i className="fas fa-envelope" />
+                </span>
               </div>
             </div>
             <div className="field">
               <label className="label">Password</label>
-              <div className="control">
+              <div className="control has-icons-left">
                 <input
                   type="password"
                   name="password1"
@@ -54,11 +60,14 @@ const RegistrationModal = ({
                   className="input"
                   onChange={updateRegistrationForm}
                 />
+                <span className="icon is-small is-left">
+                  <i className="fas fa-lock" />
+                </span>
               </div>
             </div>
             <div className="field">
               <label className="label">Confirm Password</label>
-              <div className="control">
+              <div className="control has-icons-left">
                 <input
                   type="password"
                   name="password2"
@@ -66,6 +75,9 @@ const RegistrationModal = ({
                   className="input"
                   onChange={updateRegistrationForm}
                 />
+                <span className="icon is-small is-left">
+                  <i className="fas fa-lock" />
+                </span>
               </div>
             </div>
             <div className="field is-centered">

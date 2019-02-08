@@ -1,7 +1,8 @@
 import React from 'react';
+import Alerts from './Alerts';
+import Footer from './Footer';
 import Header from './Header';
 import PageLoader from './PageLoader';
-import Alerts from './Alerts';
 
 const Layout = ({ children }) => {
   return (
@@ -10,6 +11,7 @@ const Layout = ({ children }) => {
       <Header />
       <PageLoader />
       <div id="content">{children}</div>
+      <Footer />
     </>
   );
 };
