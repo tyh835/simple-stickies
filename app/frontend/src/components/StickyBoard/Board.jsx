@@ -6,7 +6,12 @@ import Note from './Note';
 import { STICKY_NOTE } from './type';
 import { moveNote, openPostNoteModal } from '../../actions';
 
-const Board = ({ connectDropTarget, notes, openPostNoteModal }) => {
+const Board = ({
+  connectDropTarget,
+  isAuthenticated,
+  notes,
+  openPostNoteModal
+}) => {
   return connectDropTarget(
     <section className="section">
       <div className="container board" style={{ overflowY: 'hidden' }}>
@@ -14,7 +19,11 @@ const Board = ({ connectDropTarget, notes, openPostNoteModal }) => {
           <Note note={note} key={note.id} />
         ))}
       </div>
-      <div className="container is-centered">
+
+      <div
+        className="container is-centered"
+        style={{ visibility: isAuthenticated ? 'visible' : 'hidden' }}
+      >
         <button
           className="button is-primary"
           onClick={openPostNoteModal}
@@ -50,6 +59,7 @@ const StickyBoard = DropTarget(STICKY_NOTE, noteTarget, connect => ({
 }))(Board);
 
 const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
   notes: state.notes.currentNotes
 });
 

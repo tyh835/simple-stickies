@@ -65,7 +65,7 @@ export const logout = () => async (dispatch, getState) => {
 
   try {
     const config = getAuthConfig(getState);
-    const response = await axios.post('/api/auth/logout', {}, config);
+    const response = await axios.post('/api/auth/logout', null, config);
 
     if (response.status === 204) {
       dispatch({ type: LOGOUT_SUCCESS });
