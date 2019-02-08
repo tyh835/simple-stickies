@@ -30,7 +30,7 @@ const initialState = {
       id: 3,
       title: 'Draggable!',
       content:
-        'You can drag and drop the notes to place them whereever! Just make sure to save your changes.',
+        'You can drag and drop the notes to place them where ever! Just make sure to save your changes.',
       positionX: 692,
       positionY: 32
     }
