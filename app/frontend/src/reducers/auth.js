@@ -1,11 +1,13 @@
 import {
   AUTH_ERROR,
   AUTH_SUCCESS,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
   LOGOUT_SUCCESS,
-  UPDATE_LOGIN_FORM,
-  UPDATE_REGISTRATION_FORM,
   REGISTRATION_SUCCESS,
-  LOGIN_SUCCESS
+  REGISTRATION_ERROR,
+  UPDATE_LOGIN_FORM,
+  UPDATE_REGISTRATION_FORM
 } from '../actionTypes';
 
 const initialState = {
@@ -27,6 +29,8 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case AUTH_ERROR:
+    case LOGIN_ERROR:
+    case REGISTRATION_ERROR:
       return {
         ...state,
         isAuthenticated: false,
@@ -34,19 +38,20 @@ export default (state = initialState, { type, payload }) => {
         user: null
       };
     case AUTH_SUCCESS:
-      return {
-        ...state,
-        isAuthenticated: true,
-        token: payload.token,
-        user: payload.user
-      };
     case LOGIN_SUCCESS:
+    case REGISTRATION_SUCCESS:
       return {
         ...state,
         isAuthenticated: true,
         loginForm: {
           username: '',
           password: ''
+        },
+        registrationForm: {
+          username: '',
+          email: '',
+          password: '',
+          password2: ''
         },
         token: payload.token,
         user: payload.user
@@ -57,19 +62,6 @@ export default (state = initialState, { type, payload }) => {
         isAuthenticated: false,
         token: null,
         user: null
-      };
-    case REGISTRATION_SUCCESS:
-      return {
-        ...state,
-        isAuthenticated: true,
-        registrationForm: {
-          username: '',
-          email: '',
-          password: '',
-          password2: ''
-        },
-        token: payload.token,
-        user: payload.user
       };
     case UPDATE_LOGIN_FORM:
       return {

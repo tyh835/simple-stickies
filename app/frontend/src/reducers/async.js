@@ -5,6 +5,8 @@ import {
   LOADING_START,
   LOADING_END,
   LOADING_ERROR,
+  LOGIN_ERROR,
+  REGISTRATION_ERROR,
   SAVE_START,
   SAVE_END,
   SAVE_ERROR
@@ -19,6 +21,10 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case AUTH_ERROR:
+    case LOADING_ERROR:
+    case LOGIN_ERROR:
+    case REGISTRATION_ERROR:
+    case SAVE_ERROR:
       return {
         ...state,
         errors: [
@@ -44,17 +50,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         loading: false
       };
-    case LOADING_ERROR:
-      return {
-        ...state,
-        errors: [
-          ...state.errors,
-          {
-            message: payload,
-            key: uuid()
-          }
-        ]
-      };
+
     case SAVE_START:
       return {
         ...state,
@@ -64,17 +60,6 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         saving: false
-      };
-    case SAVE_ERROR:
-      return {
-        ...state,
-        errors: [
-          ...state.errors,
-          {
-            message: payload,
-            key: uuid()
-          }
-        ]
       };
     default:
       return state;

@@ -6,11 +6,13 @@ import {
   LOADING_START,
   LOADING_ERROR,
   LOADING_END,
-  LOGOUT_SUCCESS,
-  UPDATE_LOGIN_FORM,
-  UPDATE_REGISTRATION_FORM,
   LOGIN_SUCCESS,
-  REGISTRATION_SUCCESS
+  LOGIN_ERROR,
+  LOGOUT_SUCCESS,
+  REGISTRATION_SUCCESS,
+  REGISTRATION_ERROR,
+  UPDATE_LOGIN_FORM,
+  UPDATE_REGISTRATION_FORM
 } from '../actionTypes';
 import { getAuthConfig } from '../utils/auth';
 
@@ -56,7 +58,7 @@ export const login = e => async (dispatch, getState) => {
     window.localStorage.setItem('token', token);
   } catch (err) {
     const ERROR = 'Failed to login. Please try again';
-    dispatch({ type: AUTH_ERROR, payload: ERROR });
+    dispatch({ type: LOGIN_ERROR, payload: ERROR });
   }
 
   setTimeout(() => dispatch({ type: LOADING_END }), 1400);
@@ -94,7 +96,7 @@ export const register = e => async (dispatch, getState) => {
   if (password !== password2) {
     const ERROR = 'Passwords do not match, please try again.';
     dispatch({ type: CLOSE_MODAL });
-    return dispatch({ type: AUTH_ERROR, payload: ERROR });
+    return dispatch({ type: REGISTRATION_ERROR, payload: ERROR });
   }
 
   const data = JSON.stringify({ username, email, password });
@@ -116,14 +118,14 @@ export const register = e => async (dispatch, getState) => {
     let message = 'Unable to register. Please try again';
 
     if (err.response.data.username) {
-      message = err.response.data.username[0];
+      message = `Username: ${err.response.data.username[0]}`;
     } else if (err.response.data.email) {
-      message = err.response.data.email[0];
+      message = `Email: ${err.response.data.email[0]}`;
     } else if (err.response.data.password) {
-      message = err.response.data.password[0];
+      message = `Password: ${err.response.data.password[0]}`;
     }
 
-    dispatch({ type: AUTH_ERROR, payload: message });
+    dispatch({ type: REGISTRATION_ERROR, payload: message });
   }
 
   setTimeout(() => dispatch({ type: LOADING_END }), 1400);
