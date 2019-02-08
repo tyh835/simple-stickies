@@ -4,6 +4,7 @@ import {
   loadUser,
   login,
   logout,
+  register,
   updateLoginForm,
   updateRegistrationForm
 } from './auth';
@@ -27,7 +28,14 @@ import {
 
 // Export Actions
 export { dismissError };
-export { loadUser, login, logout, updateLoginForm, updateRegistrationForm };
+export {
+  loadUser,
+  login,
+  logout,
+  register,
+  updateLoginForm,
+  updateRegistrationForm
+};
 export { toggleMenu };
 export {
   closeModal,

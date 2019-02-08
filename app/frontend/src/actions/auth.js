@@ -8,7 +8,9 @@ import {
   LOADING_END,
   LOGOUT_SUCCESS,
   UPDATE_LOGIN_FORM,
-  UPDATE_REGISTRATION_FORM
+  UPDATE_REGISTRATION_FORM,
+  LOGIN_SUCCESS,
+  REGISTRATION_SUCCESS
 } from '../actionTypes';
 import { getAuthConfig } from '../utils/auth';
 
@@ -50,7 +52,7 @@ export const login = e => async (dispatch, getState) => {
   try {
     const response = await axios.post('/api/auth/login', data, config);
     const { user, token } = response.data;
-    dispatch({ type: AUTH_SUCCESS, payload: { user, token } });
+    dispatch({ type: LOGIN_SUCCESS, payload: { user, token } });
     window.localStorage.setItem('token', token);
   } catch (err) {
     const ERROR = 'Failed to login. Please try again';
@@ -89,6 +91,12 @@ export const register = e => async (dispatch, getState) => {
     password2
   } = getState().auth.registrationForm;
 
+  if (password !== password2) {
+    const ERROR = 'Passwords do not match, please try again.';
+    dispatch({ type: CLOSE_MODAL });
+    return dispatch({ type: AUTH_ERROR, payload: ERROR });
+  }
+
   const data = JSON.stringify({ username, email, password });
   const config = {
     headers: {
@@ -100,13 +108,22 @@ export const register = e => async (dispatch, getState) => {
   dispatch({ type: CLOSE_MODAL });
 
   try {
-    const response = await axios.post('/api/auth/login', data, config);
+    const response = await axios.post('/api/auth/register', data, config);
     const { user, token } = response.data;
-    dispatch({ type: AUTH_SUCCESS, payload: { user, token } });
+    dispatch({ type: REGISTRATION_SUCCESS, payload: { user, token } });
     window.localStorage.setItem('token', token);
   } catch (err) {
-    const ERROR = 'Failed to login. Please try again';
-    dispatch({ type: AUTH_ERROR, payload: ERROR });
+    let message = 'Unable to register. Please try again';
+
+    if (err.response.data.username) {
+      message = err.response.data.username[0];
+    } else if (err.response.data.email) {
+      message = err.response.data.email[0];
+    } else if (err.response.data.password) {
+      message = err.response.data.password[0];
+    }
+
+    dispatch({ type: AUTH_ERROR, payload: message });
   }
 
   setTimeout(() => dispatch({ type: LOADING_END }), 1400);

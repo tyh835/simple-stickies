@@ -3,7 +3,9 @@ import {
   AUTH_SUCCESS,
   LOGOUT_SUCCESS,
   UPDATE_LOGIN_FORM,
-  UPDATE_REGISTRATION_FORM
+  UPDATE_REGISTRATION_FORM,
+  REGISTRATION_SUCCESS,
+  LOGIN_SUCCESS
 } from '../actionTypes';
 
 const initialState = {
@@ -38,12 +40,36 @@ export default (state = initialState, { type, payload }) => {
         token: payload.token,
         user: payload.user
       };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loginForm: {
+          username: '',
+          password: ''
+        },
+        token: payload.token,
+        user: payload.user
+      };
     case LOGOUT_SUCCESS:
       return {
         ...state,
         isAuthenticated: false,
         token: null,
         user: null
+      };
+    case REGISTRATION_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        registrationForm: {
+          username: '',
+          email: '',
+          password: '',
+          password2: ''
+        },
+        token: payload.token,
+        user: payload.user
       };
     case UPDATE_LOGIN_FORM:
       return {

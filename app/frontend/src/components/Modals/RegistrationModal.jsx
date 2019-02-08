@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from './Modal';
-import { closeModal, updateRegistrationForm } from '../../actions';
+import { closeModal, register, updateRegistrationForm } from '../../actions';
 
 const RegistrationModal = ({
   closeModal,
+  register,
   registrationForm,
   updateRegistrationForm
 }) => {
@@ -19,7 +20,7 @@ const RegistrationModal = ({
           <button className="delete" onClick={closeModal} aria-label="close" />
         </header>
         <section className="modal-card-body">
-          <form>
+          <form onSubmit={register}>
             <div className="field">
               <label className="label">Username</label>
               <div className="control has-icons-left">
@@ -55,7 +56,7 @@ const RegistrationModal = ({
               <div className="control has-icons-left">
                 <input
                   type="password"
-                  name="password1"
+                  name="password"
                   value={password1}
                   className="input"
                   onChange={updateRegistrationForm}
@@ -95,7 +96,10 @@ const RegistrationModal = ({
 };
 
 RegistrationModal.propTypes = {
-  closeModal: PropTypes.func.isRequired
+  closeModal: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  registrationForm: PropTypes.object.isRequired,
+  updateRegistrationForm: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -104,5 +108,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { closeModal, updateRegistrationForm }
+  { closeModal, register, updateRegistrationForm }
 )(RegistrationModal);
