@@ -40,7 +40,7 @@ const Note = ({
       <article className="media">
         <div className="media-content">
           <div className="content">
-            <p style={{ cursor: 'pointer' }}>
+            <p style={{ cursor: 'grab' }}>
               <strong>{note.title}</strong>
               <br />
               {note.content}
@@ -56,7 +56,8 @@ Note.propTypes = {
   connectDragPreview: PropTypes.func.isRequired,
   connectDragSource: PropTypes.func.isRequired,
   isDragging: PropTypes.bool.isRequired,
-  note: PropTypes.object.isRequired
+  note: PropTypes.object.isRequired,
+  openEditNoteModal: PropTypes.func.isRequired
 };
 
 const noteSource = {

@@ -4,7 +4,7 @@ import { DragLayer } from 'react-dnd';
 import { STICKY_NOTE } from './type';
 import NotePreview from './NotePreview';
 
-const getItemStyles = props => {
+const getItemStyles = (initialOffset, currentOffset) => {
   const layerStyles = {
     position: 'fixed',
     pointerEvents: 'none',
@@ -13,7 +13,6 @@ const getItemStyles = props => {
     top: 0
   };
 
-  const { initialOffset, currentOffset } = props;
   if (!initialOffset || !currentOffset) {
     return {
       ...layerStyles,
@@ -29,15 +28,22 @@ const getItemStyles = props => {
   };
 };
 
-const BoardDragLayer = props => {
-  const { isDragging, item, itemType } = props;
-
+const BoardDragLayer = ({
+  currentOffset,
+  initialOffset,
+  isDragging,
+  item,
+  itemType
+}) => {
   if (!isDragging) {
     return null;
   }
   return (
     <section className="section">
-      <div className="container board" style={getItemStyles(props)}>
+      <div
+        className="container board"
+        style={getItemStyles(initialOffset, currentOffset)}
+      >
         {itemType === STICKY_NOTE && <NotePreview note={item.note} />}
       </div>
     </section>

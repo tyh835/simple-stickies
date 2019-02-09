@@ -27,6 +27,7 @@ const Footer = ({ isAuthenticated, openPostNoteModal }) => {
 };
 
 Footer.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
   openPostNoteModal: PropTypes.func.isRequired
 };
 

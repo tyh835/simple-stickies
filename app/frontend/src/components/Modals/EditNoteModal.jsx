@@ -71,10 +71,11 @@ const EditNoteModal = ({
 };
 
 EditNoteModal.propTypes = {
-  note: PropTypes.object.isRequired,
   closeModal: PropTypes.func.isRequired,
   deleteNote: PropTypes.func.isRequired,
+  note: PropTypes.object.isRequired,
   saveNotes: PropTypes.func.isRequired,
+  saving: PropTypes.bool.isRequired,
   updateNote: PropTypes.func.isRequired
 };
 
