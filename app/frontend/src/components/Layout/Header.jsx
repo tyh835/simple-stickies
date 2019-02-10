@@ -30,7 +30,14 @@ const Header = ({
       <div className="container has-px-mobile-5 has-px-desktop-0">
         <div className="navbar-brand">
           <a className="navbar-item" href="#">
-           <h1 className="title is-3"> Simple Stickys</h1>
+            <h1 className="subtitle is-3">
+              <i className="far fa-sticky-note has-text-primary" />
+              &nbsp;
+              <i className="far fa-sticky-note has-text-info" />
+              &nbsp;
+              <i className="far fa-sticky-note has-text-warning" />
+              &nbsp; Simple Stickies
+            </h1>
           </a>
           <a
             role="button"
