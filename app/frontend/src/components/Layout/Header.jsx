@@ -29,12 +29,8 @@ const Header = ({
     >
       <div className="container has-px-mobile-5 has-px-desktop-0">
         <div className="navbar-brand">
-          <a className="navbar-item" href="https://bulma.io">
-            <img
-              src="https://bulma.io/images/bulma-logo.png"
-              width="112"
-              height="28"
-            />
+          <a className="navbar-item" href="#">
+           <h1 className="title is-3 has-text-primary"> Simple Stickys</h1>
           </a>
           <a
             role="button"

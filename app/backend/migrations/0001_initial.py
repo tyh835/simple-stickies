@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('positionX', models.IntegerField(default=16)),
                 ('positionY', models.IntegerField(default=16)),
-                ('content', models.CharField(blank=True, max_length=500)),
+                ('content', models.TextField(blank=True, max_length=500)),
                 ('title', models.CharField(max_length=50)),
             ],
         ),
