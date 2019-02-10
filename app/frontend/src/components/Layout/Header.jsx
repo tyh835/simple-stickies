@@ -30,7 +30,7 @@ const Header = ({
       <div className="container has-px-mobile-5 has-px-desktop-0">
         <div className="navbar-brand">
           <a className="navbar-item" href="#">
-           <h1 className="title is-3 has-text-primary"> Simple Stickys</h1>
+           <h1 className="title is-3"> Simple Stickys</h1>
           </a>
           <a
             role="button"
