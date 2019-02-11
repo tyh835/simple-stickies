@@ -30,7 +30,8 @@ EXPOSE 8000
 
 WORKDIR /usr/src/app
 
-ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0:8000 --workers=3"
+ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0:8000 --workers=3 \
+  --capture-output --error-logfile -"
 
 RUN chmod 511 ./docker-entrypoint.sh
 
