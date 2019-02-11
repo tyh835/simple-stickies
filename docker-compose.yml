@@ -11,7 +11,7 @@ services:
       - static:/usr/share/nginx/static
 
   django:
-    image: tyh835/simple_stickies:1.4
+    image: tyh835/simple_stickies:1.5
     environment:
       DJANGO_DEBUG: 'FALSE'
       DJANGO_MANAGEPY_MIGRATE: 'TRUE'
