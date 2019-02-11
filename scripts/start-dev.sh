@@ -2,5 +2,5 @@
 set -xe
 
 yarn build:dev
-docker-compose up -d
-yarn start:dev
+docker-compose -f docker-compose-dev.yml up -d
+yarn start:webpack

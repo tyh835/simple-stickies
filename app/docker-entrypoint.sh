@@ -6,11 +6,11 @@ while ! nc -z postgres 5432; do
     sleep 1;
 done
 
-if [ "$DJANGO_MANAGEPY_MIGRATE" = 'True' ]; then
+if [ "$DJANGO_MANAGEPY_MIGRATE" = 'TRUE' ]; then
     python /usr/src/app/manage.py migrate --noinput
 fi
 
-if [ "$DJANGO_MANAGEPY_COLLECTSTATIC" = 'True' ]; then
+if [ "$DJANGO_MANAGEPY_COLLECTSTATIC" = 'TRUE' ]; then
     python /usr/src/app/manage.py collectstatic --noinput
 fi
 

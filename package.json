@@ -23,8 +23,9 @@
     "build": "./scripts/build-prod.sh",
     "build:dev": "webpack --mode development",
     "build:prod": "webpack --mode production",
-    "start": "./scripts/start-dev.sh",
-    "start:dev": "webpack --mode development --watch",
+    "start": "docker-compose up",
+    "start:dev": "./scripts/start-dev.sh",
+    "start:webpack": "webpack --mode development --watch",
     "stop": "./scripts/stop-dev.sh",
     "test": "./scripts/run-tests.sh"
   },
