@@ -3,30 +3,7 @@ import PropTypes from 'prop-types';
 import { DragLayer } from 'react-dnd';
 import { STICKY_NOTE } from './types';
 import NotePreview from './NotePreview';
-
-const getItemStyles = (initialOffset, currentOffset) => {
-  const layerStyles = {
-    position: 'fixed',
-    pointerEvents: 'none',
-    zIndex: 100,
-    left: 0,
-    top: 0
-  };
-
-  if (!initialOffset || !currentOffset) {
-    return {
-      ...layerStyles,
-      display: 'none'
-    };
-  }
-  const { x, y } = currentOffset;
-  const transform = `translate(${x}px, ${y}px)`;
-
-  return {
-    ...layerStyles,
-    transform
-  };
-};
+import { getLayerStyle } from '../../utils/notes';
 
 const BoardDragLayer = ({
   currentOffset,
@@ -42,7 +19,7 @@ const BoardDragLayer = ({
     <section className="section">
       <div
         className="container board"
-        style={getItemStyles(initialOffset, currentOffset)}
+        style={getLayerStyle(initialOffset, currentOffset)}
       >
         {itemType === STICKY_NOTE && <NotePreview note={item.note} />}
       </div>
@@ -53,15 +30,15 @@ const BoardDragLayer = ({
 BoardDragLayer.propTypes = {
   currentOffset: PropTypes.object,
   initialOffset: PropTypes.object,
+  isDragging: PropTypes.bool.isRequired,
   item: PropTypes.object,
-  itemType: PropTypes.string,
-  isDragging: PropTypes.bool.isRequired
+  itemType: PropTypes.string
 };
 
 export default DragLayer(monitor => ({
-  item: monitor.getItem(),
-  itemType: monitor.getItemType(),
-  initialOffset: monitor.getInitialSourceClientOffset(),
   currentOffset: monitor.getSourceClientOffset(),
-  isDragging: monitor.isDragging()
+  initialOffset: monitor.getInitialSourceClientOffset(),
+  isDragging: monitor.isDragging(),
+  item: monitor.getItem(),
+  itemType: monitor.getItemType()
 }))(BoardDragLayer);

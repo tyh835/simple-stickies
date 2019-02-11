@@ -30,9 +30,9 @@ export const loadUser = () => async dispatch => {
       const response = await axios.get('/api/auth/user', config);
       dispatch({ type: AUTH_SUCCESS, payload: { user: response.data, token } });
     } catch (err) {
-      window.localStorage.removeItem('token');
       const ERROR = 'Your session has expired. Please log in again.';
       dispatch({ type: AUTH_ERROR, payload: ERROR });
+      window.localStorage.removeItem('token');
     }
   }
 };
@@ -54,6 +54,7 @@ export const login = e => async (dispatch, getState) => {
   try {
     const response = await axios.post('/api/auth/login', data, config);
     const { user, token } = response.data;
+
     dispatch({ type: LOGIN_SUCCESS, payload: { user, token } });
     window.localStorage.setItem('token', token);
   } catch (err) {
@@ -76,7 +77,6 @@ export const logout = () => async (dispatch, getState) => {
       window.localStorage.removeItem('token');
     }
   } catch (err) {
-    console.log(err);
     const ERROR = 'Failed to logout. Please try again';
     dispatch({ type: LOADING_ERROR, payload: ERROR });
   }

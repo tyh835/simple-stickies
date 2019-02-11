@@ -1,29 +1,16 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
-import { openEditNoteModal } from '../../actions';
 import { STICKY_NOTE } from './types';
-
-const getStyles = (note, isDragging) => {
-  const { positionX, positionY } = note;
-  const transform = `translate3d(${positionX}px, ${positionY}px, 0)`;
-
-  return {
-    position: 'absolute',
-    transform,
-    opacity: isDragging ? 0 : 1,
-    height: isDragging ? 0 : ''
-  };
-};
+import { getNoteStyle } from '../../utils/notes';
 
 const Note = ({
   connectDragPreview,
   connectDragSource,
+  openEditNoteModal,
   isDragging,
-  note,
-  openEditNoteModal
+  note
 }) => {
   useEffect(() => {
     connectDragPreview(getEmptyImage(), {
@@ -34,7 +21,7 @@ const Note = ({
   return connectDragSource(
     <div
       className="box"
-      style={getStyles(note, isDragging)}
+      style={getNoteStyle(note, isDragging)}
       onDoubleClick={() => openEditNoteModal(note.id)}
     >
       <article className="media">
@@ -68,17 +55,8 @@ const noteSource = {
   }
 };
 
-const DraggableNote = DragSource(
-  STICKY_NOTE,
-  noteSource,
-  (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging()
-  })
-)(Note);
-
-export default connect(
-  null,
-  { openEditNoteModal }
-)(DraggableNote);
+export default DragSource(STICKY_NOTE, noteSource, (connect, monitor) => ({
+  connectDragSource: connect.dragSource(),
+  connectDragPreview: connect.dragPreview(),
+  isDragging: monitor.isDragging()
+}))(Note);

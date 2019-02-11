@@ -4,19 +4,18 @@ import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
 import Note from './Note';
 import { STICKY_NOTE } from './types';
-import { moveNote, openPostNoteModal } from '../../actions';
+import { moveNote, openEditNoteModal } from '../../actions';
 
-const Board = ({
-  connectDropTarget,
-  isAuthenticated,
-  notes,
-  openPostNoteModal
-}) => {
+const Board = ({ connectDropTarget, notes }) => {
   return connectDropTarget(
     <section className="section">
       <div className="container board" style={{ overflowY: 'hidden' }}>
         {notes.map(note => (
-          <Note note={note} key={note.id} />
+          <Note
+            key={note.id}
+            note={note}
+            openEditNoteModal={openEditNoteModal}
+          />
         ))}
       </div>
     </section>
@@ -26,8 +25,7 @@ const Board = ({
 Board.propTypes = {
   connectDropTarget: PropTypes.func.isRequired,
   moveNote: PropTypes.func.isRequired,
-  notes: PropTypes.array.isRequired,
-  openPostNoteModal: PropTypes.func.isRequired
+  notes: PropTypes.array.isRequired
 };
 
 const noteTarget = {
@@ -52,5 +50,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { moveNote, openPostNoteModal }
+  { moveNote, openEditNoteModal }
 )(StickyBoard);

@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const NotePreview = ({ note }) => {
+  const { title, content } = note;
   return (
     <div className="box dragging">
       <article className="media">
         <div className="media-content">
           <div className="content">
             <p>
-              <strong>{note.title}</strong>
+              <strong>{title}</strong>
               <br />
-              {note.content}
+              {content}
             </p>
           </div>
         </div>
@@ -20,7 +21,10 @@ const NotePreview = ({ note }) => {
 };
 
 NotePreview.propTypes = {
-  note: PropTypes.object.isRequired
+  note: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default NotePreview;

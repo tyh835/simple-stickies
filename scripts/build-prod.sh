@@ -3,6 +3,6 @@ set -xe
 
 export NODE_ENV=production
 yarn build:prod
-docker-compose build
+docker image build . -t tyh835/simple_stickies
 echo 'Build Success!'
 
