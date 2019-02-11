@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    image: tyh835/simple_stickies_nginx:1.1
+    image: tyh835/simple_stickies_nginx:1.2
     depends_on:
       - django
     ports:
