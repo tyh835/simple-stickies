@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { openEditNoteModal } from '../../actions';
-import { STICKY_NOTE } from './type';
+import { STICKY_NOTE } from './types';
 
 const getStyles = (note, isDragging) => {
   const { positionX, positionY } = note;

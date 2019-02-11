@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import EditNoteModal from './EditNoteModal';
 import LoginModal from './LoginModal';
 import PostNoteModal from './PostNoteModal';
@@ -8,9 +9,9 @@ import {
   LOGIN_MODAL,
   POST_NOTE_MODAL,
   REGISTRATION_MODAL
-} from '../../actions/modals';
+} from './types';
 
-export const renderModal = type => {
+const renderModal = type => {
   switch (type) {
     case EDIT_NOTE_MODAL:
       return <EditNoteModal />;
@@ -24,3 +25,22 @@ export const renderModal = type => {
       return null;
   }
 };
+
+const Modals = ({ closeModal, modalType, showModal }) => {
+  if (!showModal) return null;
+
+  return (
+    <div className={`modal ${showModal ? 'is-active' : ''}`}>
+      <div className="modal-background" onClick={closeModal} />
+      {renderModal(modalType)}
+    </div>
+  );
+};
+
+Modals.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  modalType: PropTypes.string.isRequired,
+  showModal: PropTypes.bool.isRequired
+};
+
+export default Modals;

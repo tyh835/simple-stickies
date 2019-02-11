@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Layout from './Layout';
 import StickyBoard from './StickyBoard';
-import { renderModal } from './Modals';
-import { loadUser, fetchNotes } from '../actions';
+import Modals from './Modals';
+import { closeModal, loadUser, fetchNotes } from '../actions';
 
 const App = ({
+  closeModal,
   fetchNotes,
-  isAuthenticated,
   loadUser,
-  showModal,
-  modalType
+  isAuthenticated,
+  modalType,
+  showModal
 }) => {
   useEffect(() => {
     if (isAuthenticated) fetchNotes();
@@ -20,27 +21,32 @@ const App = ({
 
   return (
     <Layout>
-      {showModal && renderModal(modalType)}
+      <Modals
+        closeModal={closeModal}
+        modalType={modalType}
+        showModal={showModal}
+      />
       <StickyBoard />
     </Layout>
   );
 };
 
 App.propTypes = {
+  closeModal: PropTypes.func.isRequired,
   fetchNotes: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
   loadUser: PropTypes.func.isRequired,
-  showModal: PropTypes.bool.isRequired,
-  modalType: PropTypes.string.isRequired
+  isAuthenticated: PropTypes.bool.isRequired,
+  modalType: PropTypes.string.isRequired,
+  showModal: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
-  showModal: state.modal.showModal,
-  modalType: state.modal.modalType
+  modalType: state.modal.modalType,
+  showModal: state.modal.showModal
 });
 
 export default connect(
   mapStateToProps,
-  { fetchNotes, loadUser }
+  { closeModal, fetchNotes, loadUser }
 )(App);

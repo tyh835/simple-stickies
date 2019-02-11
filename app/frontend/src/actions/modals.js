@@ -1,10 +1,10 @@
 import { CLOSE_MODAL, OPEN_MODAL } from '../actionTypes';
-
-// Export constants representing modal type
-export const EDIT_NOTE_MODAL = 'EDIT_NOTE_MODAL';
-export const LOGIN_MODAL = 'LOGIN_MODAL';
-export const POST_NOTE_MODAL = 'POST_NOTE_MODAL';
-export const REGISTRATION_MODAL = 'REGISTRATION_MODAL';
+import {
+  EDIT_NOTE_MODAL,
+  LOGIN_MODAL,
+  POST_NOTE_MODAL,
+  REGISTRATION_MODAL
+} from '../components/Modals/types';
 
 export const closeModal = () => ({
   type: CLOSE_MODAL

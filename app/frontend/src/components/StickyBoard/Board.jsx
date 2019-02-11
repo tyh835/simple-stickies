@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
 import Note from './Note';
-import { STICKY_NOTE } from './type';
+import { STICKY_NOTE } from './types';
 import { moveNote, openPostNoteModal } from '../../actions';
 
 const Board = ({
