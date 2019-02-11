@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MultilineText from './MultilineText';
 
 const NotePreview = ({ note }) => {
   const { title, content } = note;
@@ -11,7 +12,7 @@ const NotePreview = ({ note }) => {
             <p>
               <strong>{title}</strong>
               <br />
-              {content}
+              <MultilineText content={content} />
             </p>
           </div>
         </div>

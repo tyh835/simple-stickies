@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
+import MultilineText from './MultilineText';
 import { YELLOW_STICKY } from './types';
 import { getNoteStyle } from '../../utils/notes';
 
@@ -40,7 +41,7 @@ const Note = ({
             <p className="can-grab">
               <strong>{title}</strong>
               <br />
-              {content}
+              <MultilineText content={content} />
             </p>
           </div>
         </div>
