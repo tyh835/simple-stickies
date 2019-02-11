@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    image: tyh835/simple_stickies_nginx:1.0
+    image: tyh835/simple_stickies_nginx:1.1
     depends_on:
       - django
     ports:
@@ -11,7 +11,7 @@ services:
       - static:/usr/share/nginx/static
 
   django:
-    image: tyh835/simple_stickies:1.1
+    image: tyh835/simple_stickies:1.3
     environment:
       DJANGO_DEBUG: 'FALSE'
       DJANGO_MANAGEPY_MIGRATE: 'TRUE'

@@ -11,6 +11,10 @@ node_modules
 
 # Docker
 .dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose-dev.yml
+test-docker.yml
 
 # Nginx
 /nginx
