@@ -27,8 +27,6 @@ const renderModal = type => {
 };
 
 const Modals = ({ closeModal, modalType, showModal }) => {
-  if (!showModal) return null;
-
   return (
     <div className={`modal ${showModal ? 'is-active' : ''}`}>
       <div className="modal-background" onClick={closeModal} />
