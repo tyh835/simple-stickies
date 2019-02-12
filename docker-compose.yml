@@ -2,12 +2,13 @@ version: '3'
 
 services:
   web:
-    image: tyh835/simple_stickies_nginx:1.2
+    image: nginx:1.15-alpine
     depends_on:
       - django
     ports:
       - 8000:80
     volumes:
+      - ./nginx:/etc/nginx/conf.d
       - static:/usr/share/nginx/static
 
   django:
