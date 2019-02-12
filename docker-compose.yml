@@ -6,13 +6,13 @@ services:
     depends_on:
       - django
     ports:
-      - 8000:80
+      - 8000:81
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - static:/usr/share/nginx/static
 
   django:
-    image: tyh835/simple_stickies:1.6
+    image: tyh835/simple_stickies:1.7
     environment:
       DJANGO_DEBUG: 'FALSE'
       DJANGO_MANAGEPY_MIGRATE: 'TRUE'

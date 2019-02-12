@@ -11,7 +11,8 @@ export default (state = initialState, { type, payload }) => {
     case CLOSE_MODAL:
       return {
         ...state,
-        showModal: false
+        showModal: false,
+        modalType: ''
       };
     case OPEN_MODAL:
       return {

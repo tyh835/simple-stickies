@@ -32,7 +32,16 @@ const tutorialNotes = [
       'You can drag and drop the notes to place them where ever! Just make sure to save your changes.',
     positionX: 692,
     positionY: 32
+  },
+  {
+    id: 4,
+    title: 'Terms and Conditions',
+    content:
+      'Simple Stickies is a personal project. By using this site you release the site of all liabilities associated with your use.',
+    positionX: 32,
+    positionY: 362
   }
+
 ];
 
 const initialState = {
