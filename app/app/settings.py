@@ -25,7 +25,8 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY') or 'fakekey'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG') == 'TRUE'
 
-ALLOWED_HOSTS = ['localhost', 'ec2-35-155-140-217.us-west-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['localhost', 'ec2-35-155-140-217.us-west-2.compute.amazonaws.com',
+                 'www.simple-stickies.io', 'simple-stickies.io']
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
