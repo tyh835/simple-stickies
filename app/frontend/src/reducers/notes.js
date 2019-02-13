@@ -25,7 +25,7 @@ const tutorialNotes = [
     id: 2,
     title: 'Editing notes',
     content: 'To edit, double click on the note you want to edit.',
-    color: '#fffeb7',
+    color: '#d3ffce',
     positionX: 362,
     positionY: 32
   },
@@ -34,7 +34,7 @@ const tutorialNotes = [
     title: 'Draggable!',
     content:
       'You can drag and drop the notes to place them where ever! Just make sure to save your changes.',
-    color: '#fffeb7',
+    color: '#ffcce0',
     positionX: 692,
     positionY: 32
   },
@@ -43,7 +43,7 @@ const tutorialNotes = [
     title: 'Terms and Conditions',
     content:
       'Simple Stickies is a personal project. By using this site you release the site of all liabilities associated with your use.',
-    color: '#fffeb7',
+    color: '#80ffec',
     positionX: 32,
     positionY: 362
   },
@@ -52,7 +52,7 @@ const tutorialNotes = [
     title: 'Privacy Policy',
     content:
       'Simple Stickies does not and will not share your personal information with any third-party applications.',
-    color: '#fffeb7',
+    color: '#88ff89',
     positionX: 362,
     positionY: 362
   }
