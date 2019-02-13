@@ -51,7 +51,7 @@ const tutorialNotes = [
     id: 5,
     title: 'Privacy Policy',
     content:
-      'Simple Stickies does and will not share your personal information with any third-party applications.',
+      'Simple Stickies does not and will not share your personal information with any third-party applications.',
     color: '#fffeb7',
     positionX: 362,
     positionY: 362
