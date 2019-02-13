@@ -7,10 +7,14 @@ import {
   SAVE_NOTE,
   SET_NOTES,
   UPDATE_NOTE,
+  UPDATE_NOTE_COLOR,
   UPDATE_NEW_NOTE,
+  UPDATE_NEW_NOTE_COLOR,
+  AUTH_ERROR,
   LOADING_START,
-  SAVE_START,
   LOADING_END,
+  LOADING_ERROR,
+  SAVE_START,
   SAVE_END,
   CLOSE_MODAL
 } from '../actionTypes';
@@ -66,6 +70,7 @@ export const moveNote = (id, x, y) => ({
 export const postNote = (e, note) => async (dispatch, getState) => {
   e.preventDefault();
 
+  console.log(note);
   const config = getAuthConfig(getState);
 
   dispatch({ type: LOADING_START });
@@ -126,6 +131,16 @@ export const updateNote = (e, id) => {
   };
 };
 
+export const updateNoteColor = (id, color) => {
+  return {
+    type: UPDATE_NOTE_COLOR,
+    payload: {
+      id,
+      color
+    }
+  };
+};
+
 export const updateNewNote = e => {
   const { name, value } = e.target;
   return {
@@ -133,6 +148,15 @@ export const updateNewNote = e => {
     payload: {
       name,
       value
+    }
+  };
+};
+
+export const updateNewNoteColor = color => {
+  return {
+    type: UPDATE_NEW_NOTE_COLOR,
+    payload: {
+      color
     }
   };
 };

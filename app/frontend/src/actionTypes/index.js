@@ -30,4 +30,6 @@ export const MOVE_NOTE = 'MOVE_NOTE';
 export const SET_NOTES = 'SET_NOTES';
 export const SAVE_NOTE = 'SAVE_NOTE';
 export const UPDATE_NOTE = 'UPDATE_NOTE';
+export const UPDATE_NOTE_COLOR = 'UPDATE_NOTE_COLOR';
 export const UPDATE_NEW_NOTE = 'UPDATE_NEW_NOTE';
+export const UPDATE_NEW_NOTE_COLOR = 'UPDATE_NEW_NOTE_COLOR';

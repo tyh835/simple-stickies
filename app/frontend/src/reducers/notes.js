@@ -6,7 +6,9 @@ import {
   SAVE_NOTE,
   SET_NOTES,
   UPDATE_NOTE,
+  UPDATE_NOTE_COLOR,
   UPDATE_NEW_NOTE,
+  UPDATE_NEW_NOTE_COLOR,
   LOGOUT_SUCCESS
 } from '../actionTypes';
 
@@ -61,7 +63,8 @@ const initialState = {
   cachedNotes: tutorialNotes,
   newNote: {
     title: '',
-    content: ''
+    content: '',
+    color: '#fffeb7'
   }
 };
 
@@ -126,12 +129,32 @@ export default (state = initialState, { type, payload }) => {
             };
         })
       };
+    case UPDATE_NOTE_COLOR:
+      return {
+        ...state,
+        currentNotes: state.currentNotes.map(note => {
+          if (note.id !== payload.id) return note;
+          else
+            return {
+              ...note,
+              color: payload.color
+            };
+        })
+      };
     case UPDATE_NEW_NOTE:
       return {
         ...state,
         newNote: {
           ...state.newNote,
           [payload.name]: payload.value
+        }
+      };
+    case UPDATE_NEW_NOTE_COLOR:
+      return {
+        ...state,
+        newNote: {
+          ...state.newNote,
+          color: payload.color
         }
       };
     case LOGOUT_SUCCESS:

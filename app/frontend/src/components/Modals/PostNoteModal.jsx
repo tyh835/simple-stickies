@@ -1,9 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { closeModal, postNote, updateNewNote } from '../../actions';
+import ColorPicker from './ColorPicker';
+import {
+  closeModal,
+  postNote,
+  updateNewNote,
+  updateNewNoteColor
+} from '../../actions';
 
-const PostNoteModal = ({ closeModal, newNote, postNote, updateNewNote }) => {
+const PostNoteModal = ({
+  closeModal,
+  newNote,
+  postNote,
+  updateNewNote,
+  updateNewNoteColor
+}) => {
   const { title, content } = newNote;
 
   return (
@@ -38,6 +50,7 @@ const PostNoteModal = ({ closeModal, newNote, postNote, updateNewNote }) => {
               />
             </div>
           </div>
+          <ColorPicker handleColorChange={updateNewNoteColor} />
           <div className="field is-centered">
             <div className="control">
               <button className="button is-primary" type="submit">
@@ -64,5 +77,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { closeModal, postNote, updateNewNote }
+  { closeModal, postNote, updateNewNote, updateNewNoteColor }
 )(PostNoteModal);

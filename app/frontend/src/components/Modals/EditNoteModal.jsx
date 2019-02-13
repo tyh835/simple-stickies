@@ -1,7 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { closeModal, deleteNote, saveNotes, updateNote } from '../../actions';
+import ColorPicker from './ColorPicker';
+import {
+  closeModal,
+  deleteNote,
+  saveNotes,
+  updateNote,
+  updateNoteColor
+} from '../../actions';
 
 const EditNoteModal = ({
   closeModal,
@@ -9,7 +16,8 @@ const EditNoteModal = ({
   note,
   saveNotes,
   saving,
-  updateNote
+  updateNote,
+  updateNoteColor
 }) => {
   const { title, content } = note;
 
@@ -45,6 +53,9 @@ const EditNoteModal = ({
               />
             </div>
           </div>
+          <ColorPicker
+            handleColorChange={color => updateNoteColor(note.id, color)}
+          />
           <div className="field is-centered">
             <div className="control">
               <button
@@ -83,5 +94,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { closeModal, deleteNote, saveNotes, updateNote }
+  { closeModal, deleteNote, saveNotes, updateNote, updateNoteColor }
 )(EditNoteModal);

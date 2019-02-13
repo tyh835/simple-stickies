@@ -28,10 +28,10 @@ export const getNoteStyle = (note, isDragging) => {
   const { color, positionX, positionY } = note;
   const transform = `translate3d(${positionX}px, ${positionY}px, 0)`;
   const shadowColor = tinycolor(color)
-    .saturate(35)
-    .darken(35)
+    .saturate(30)
+    .darken(30)
     .spin(-5)
-    .setAlpha(0.7)
+    .setAlpha(0.5)
     .toString();
 
   return {
@@ -47,10 +47,10 @@ export const getNoteStyle = (note, isDragging) => {
 export const getNotePreviewStyle = note => {
   const { color } = note;
   const shadowColor = tinycolor(color)
-    .saturate(35)
-    .darken(35)
+    .saturate(30)
+    .darken(30)
     .spin(-5)
-    .setAlpha(0.45)
+    .setAlpha(0.3)
     .toString();
 
   return {
@@ -68,6 +68,7 @@ export const noteHasChanges = (currentNote, cachedNote) => {
     currentNote.deleted === cachedNote.deleted &&
     currentNote.positionX === cachedNote.positionX &&
     currentNote.positionY === cachedNote.positionY &&
+    currentNote.color === cachedNote.color &&
     currentNote.content === cachedNote.content &&
     currentNote.title === cachedNote.title
   );

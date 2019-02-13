@@ -22,7 +22,9 @@ import {
   postNote,
   saveNotes,
   updateNote,
-  updateNewNote
+  updateNoteColor,
+  updateNewNote,
+  updateNewNoteColor
 } from './notes';
 
 // Export Actions
@@ -49,5 +51,7 @@ export {
   postNote,
   saveNotes,
   updateNote,
-  updateNewNote
+  updateNoteColor,
+  updateNewNote,
+  updateNewNoteColor
 };
