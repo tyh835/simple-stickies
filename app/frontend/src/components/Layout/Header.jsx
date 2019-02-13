@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   logout,
   openLoginModal,
   openRegistrationModal,
-  saveNotes,
-  toggleMenu
+  saveNotes
 } from '../../actions';
 
 const Header = ({
@@ -14,12 +13,11 @@ const Header = ({
   logout,
   openLoginModal,
   openRegistrationModal,
-  showMenu,
   saving,
-  saveNotes,
-  toggleMenu
+  saveNotes
 }) => {
   const { isAuthenticated, user } = auth;
+  const [showMenu, setShowMenu] = useState(false);
 
   return (
     <nav
@@ -44,7 +42,7 @@ const Header = ({
             className={`navbar-burger burger ${showMenu ? 'is-active' : ''}`}
             aria-label="menu"
             aria-expanded={`${showMenu}`}
-            onClick={toggleMenu}
+            onClick={() => setShowMenu(!showMenu)}
           >
             <span aria-hidden="true" />
             <span aria-hidden="true" />
@@ -70,8 +68,8 @@ const Header = ({
             </div>
           ) : (
             <div className="navbar-end">
-              <div className="navbar-item is-centered">
-                <span className="welcome">Welcome, {user.username}!</span>
+              <div className="navbar-item is-centered welcome">
+                Welcome, {user.username}!
               </div>
               <div className="navbar-item is-centered">
                 <button
@@ -103,18 +101,15 @@ Header.propTypes = {
   openLoginModal: PropTypes.func.isRequired,
   openRegistrationModal: PropTypes.func.isRequired,
   saving: PropTypes.bool.isRequired,
-  saveNotes: PropTypes.func.isRequired,
-  showMenu: PropTypes.bool.isRequired,
-  toggleMenu: PropTypes.func.isRequired
+  saveNotes: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  showMenu: state.menu.showMenu,
   saving: state.async.saving
 });
 
 export default connect(
   mapStateToProps,
-  { logout, openLoginModal, openRegistrationModal, saveNotes, toggleMenu }
+  { logout, openLoginModal, openRegistrationModal, saveNotes }
 )(Header);

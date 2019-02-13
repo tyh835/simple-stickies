@@ -8,7 +8,6 @@ import {
   updateLoginForm,
   updateRegistrationForm
 } from './auth';
-import { toggleMenu } from './menu';
 import {
   closeModal,
   openEditNoteModal,
@@ -36,7 +35,6 @@ export {
   updateLoginForm,
   updateRegistrationForm
 };
-export { toggleMenu };
 export {
   closeModal,
   openEditNoteModal,

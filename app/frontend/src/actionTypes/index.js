@@ -18,9 +18,6 @@ export const REGISTRATION_ERROR = 'REGISTRATION_ERROR';
 export const UPDATE_LOGIN_FORM = 'UPDATE_LOGIN_FORM';
 export const UPDATE_REGISTRATION_FORM = 'UPDATE_REGISTRATION_FORM';
 
-// Menu Action Types
-export const TOGGLE_MENU = 'TOGGLE_MENU';
-
 // Modal Action Types
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const OPEN_MODAL = 'OPEN_MODAL';

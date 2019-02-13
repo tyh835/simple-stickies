@@ -14,7 +14,7 @@ import {
   SAVE_END,
   CLOSE_MODAL
 } from '../actionTypes';
-import { handleNotesError, noteHasChanges } from '../utils/notes';
+import { noteHasChanges } from '../utils/notes';
 import { getAuthConfig } from '../utils/auth';
 
 export const deleteNote = id => async (dispatch, getState) => {
@@ -135,4 +135,14 @@ export const updateNewNote = e => {
       value
     }
   };
+};
+
+const errors = {};
+errors.UNAUTHORIZED = 'Sorry, you need to be logged in to perform this action.';
+
+export const handleNotesError = (dispatch, err) => {
+  if (err.response && err.response.status === 401) {
+    return dispatch({ type: AUTH_ERROR, payload: errors.UNAUTHORIZED });
+  }
+  dispatch({ type: LOADING_ERROR, payload: err.message });
 };
