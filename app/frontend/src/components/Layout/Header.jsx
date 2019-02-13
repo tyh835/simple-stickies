@@ -36,7 +36,7 @@ const Header = ({
               <i className="far fa-sticky-note has-text-info" />
               &nbsp;
               <i className="far fa-sticky-note has-text-warning" />
-              &nbsp; Simple Stickies
+              <span className="is-hidden-mobile">&nbsp; Simple Stickies</span>
             </h1>
           </a>
           <a
