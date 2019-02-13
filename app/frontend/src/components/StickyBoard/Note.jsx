@@ -21,19 +21,31 @@ const Note = ({
   isDragging,
   note
 }) => {
+  const { id, title, content } = note;
+
   useEffect(() => {
     connectDragPreview(getEmptyImage(), {
       captureDraggingState: true
     });
   }, []);
 
-  const { id, title, content } = note;
+  let touchEdit;
+  const handleStartEdit = () => {
+    touchEdit = setTimeout(() => openEditNoteModal(id), 2000);
+  };
+  const handleClearEdit = () => {
+    clearTimeout(touchEdit);
+  };
 
   return connectDragSource(
     <div
       className="box"
       style={getNoteStyle(note, isDragging)}
       onDoubleClick={() => openEditNoteModal(id)}
+      onTouchStart={handleStartEdit}
+      onTouchEnd={handleClearEdit}
+      onTouchMove={handleClearEdit}
+      onTouchCancel={handleClearEdit}
     >
       <article className="media">
         <div className="media-content">

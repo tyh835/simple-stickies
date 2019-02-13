@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import { DragDropContextProvider } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import TouchBackend from 'react-dnd-touch-backend';
 
 import App from './components/App';
 import rootReducer from './reducers';
@@ -20,7 +20,9 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <DragDropContextProvider backend={HTML5Backend}>
+    <DragDropContextProvider
+      backend={TouchBackend({ enableMouseEvents: true })}
+    >
       <App />
     </DragDropContextProvider>
   </Provider>,

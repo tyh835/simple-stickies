@@ -1,5 +1,9 @@
 .can-grab {
   cursor: grab;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .is-loading.is-loading.is-loading {

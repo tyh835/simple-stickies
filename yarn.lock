@@ -4220,6 +4220,13 @@ react-dnd-html5-backend@^7.0.2:
     dnd-core "^7.0.2"
     lodash "^4.17.11"
 
+react-dnd-touch-backend@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/react-dnd-touch-backend/-/react-dnd-touch-backend-0.7.1.tgz#654b47a2e7979e69c4b39047225ea264383868ca"
+  integrity sha512-B2oiyGWDe35jqBEnczW+cGRHxL6FN2BpMK498mSmBeLjfRGz1h3gzUAh3GrBSmjWvntCM1cDwyPgIYQNIbtM7g==
+  dependencies:
+    invariant "^2.2.4"
+
 react-dnd@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/react-dnd/-/react-dnd-7.0.2.tgz#8f5611a6e877592932c082d6280c64d1c817f420"
