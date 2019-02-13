@@ -40,8 +40,15 @@ const tutorialNotes = [
       'Simple Stickies is a personal project. By using this site you release the site of all liabilities associated with your use.',
     positionX: 32,
     positionY: 362
+  },
+  {
+    id: 5,
+    title: 'Privacy Policy',
+    content:
+      'Simple Stickies does and will not share your personal information with any third-party applications.',
+    positionX: 362,
+    positionY: 362
   }
-
 ];
 
 const initialState = {
