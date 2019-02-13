@@ -1,1 +1,1 @@
-export const YELLOW_STICKY = 'YELLOW_STICKY';
+export const STICKY_NOTE = 'STICKY_NOTE';
