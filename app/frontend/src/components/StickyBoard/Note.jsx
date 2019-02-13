@@ -39,7 +39,7 @@ const Note = ({
 
   return connectDragSource(
     <div
-      className="box"
+      className="box can-grab"
       style={getNoteStyle(note, isDragging)}
       onDoubleClick={() => openEditNoteModal(id)}
       onTouchStart={handleStartEdit}
@@ -50,7 +50,7 @@ const Note = ({
       <article className="media">
         <div className="media-content">
           <div className="content">
-            <p className="can-grab">
+            <p>
               <strong>{title}</strong>
               <br />
               <MultilineText content={content} />
