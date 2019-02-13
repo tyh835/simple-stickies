@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DragLayer } from 'react-dnd';
 import NotePreview from './NotePreview';
-import { YELLOW_STICKY } from './types';
+import { STICKY_NOTE } from './types';
 import { getLayerStyle } from '../../utils/notes';
 
 const BoardDragLayer = ({
@@ -22,7 +22,7 @@ const BoardDragLayer = ({
         className="container board"
         style={getLayerStyle(initialOffset, currentOffset)}
       >
-        {itemType === YELLOW_STICKY && <NotePreview note={item.note} />}
+        {itemType === STICKY_NOTE && <NotePreview note={item.note} />}
       </div>
     </section>
   );

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
 import Note from './Note';
-import { YELLOW_STICKY } from './types';
+import { STICKY_NOTE } from './types';
 import { moveNote, openEditNoteModal } from '../../actions';
 
 const noteTarget = {
@@ -40,7 +40,7 @@ Board.propTypes = {
   notes: PropTypes.array.isRequired
 };
 
-const StickyBoard = DropTarget(YELLOW_STICKY, noteTarget, connect => ({
+const StickyBoard = DropTarget(STICKY_NOTE, noteTarget, connect => ({
   connectDropTarget: connect.dropTarget()
 }))(Board);
 
