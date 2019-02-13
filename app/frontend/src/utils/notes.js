@@ -1,4 +1,4 @@
-import { AUTH_ERROR, LOADING_ERROR } from '../actionTypes';
+import tinycolor from 'tinycolor2';
 
 export const getLayerStyle = (initialOffset, currentOffset) => {
   const layerStyle = {
@@ -25,10 +25,18 @@ export const getLayerStyle = (initialOffset, currentOffset) => {
 };
 
 export const getNoteStyle = (note, isDragging) => {
-  const { positionX, positionY } = note;
+  const { color, positionX, positionY } = note;
   const transform = `translate3d(${positionX}px, ${positionY}px, 0)`;
+  const shadowColor = tinycolor(color)
+    .saturate(35)
+    .darken(35)
+    .spin(-5)
+    .setAlpha(0.7)
+    .toString();
 
   return {
+    backgroundColor: color,
+    boxShadow: `0 2px 4px ${shadowColor}, 0 1px 2px ${shadowColor}`,
     position: 'absolute',
     transform,
     opacity: isDragging ? 0 : 1,
@@ -36,13 +44,22 @@ export const getNoteStyle = (note, isDragging) => {
   };
 };
 
-const UNAUTHORIZED = 'Sorry, you need to be logged in to perform this action.';
+export const getNotePreviewStyle = note => {
+  const { color } = note;
+  const shadowColor = tinycolor(color)
+    .saturate(35)
+    .darken(35)
+    .spin(-5)
+    .setAlpha(0.45)
+    .toString();
 
-export const handleNotesError = (dispatch, err) => {
-  if (err.response && err.response.status === 401) {
-    return dispatch({ type: AUTH_ERROR, payload: UNAUTHORIZED });
-  }
-  dispatch({ type: LOADING_ERROR, payload: err.message });
+  return {
+    backgroundColor: color,
+    boxShadow: ` 0 14px 28px ${shadowColor},
+    0 10px 10px ${shadowColor}, 0 1px 2px ${shadowColor}`,
+    position: 'absolute',
+    transform: 'translateY(-4px)'
+  };
 };
 
 export const noteHasChanges = (currentNote, cachedNote) => {
