@@ -81,7 +81,8 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         newNote: {
           title: '',
-          content: ''
+          content: '',
+          color: '#fffeb7'
         }
       };
     case DELETE_NOTE:
