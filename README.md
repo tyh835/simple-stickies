@@ -1,4 +1,4 @@
-# Simple Stickys
+# Simple Stickies
 
 React/Django app backed by Postgres and Docker.
 
