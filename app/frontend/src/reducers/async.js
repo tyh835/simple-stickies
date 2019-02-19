@@ -1,12 +1,15 @@
 import uuid from 'uuid/v4';
 import {
   AUTH_ERROR,
+  AUTH_SUCCESS,
   DISMISS_ERROR,
   LOADING_START,
   LOADING_END,
   LOADING_ERROR,
   LOGIN_ERROR,
+  LOGIN_SUCCESS,
   REGISTRATION_ERROR,
+  REGISTRATION_SUCCESS,
   SAVE_START,
   SAVE_END,
   SAVE_ERROR
@@ -34,6 +37,13 @@ export default (state = initialState, { type, payload }) => {
             key: uuid()
           }
         ]
+      };
+    case AUTH_SUCCESS:
+    case LOGIN_SUCCESS:
+    case REGISTRATION_SUCCESS:
+      return {
+        ...state,
+        errors: []
       };
     case DISMISS_ERROR:
       return {
