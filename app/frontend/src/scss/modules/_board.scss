@@ -9,8 +9,9 @@
 
   .box {
     position: absolute;
+    user-select: none;
     width: 240px;
     height: 240px;
-    user-select: none;
+    overflow-y: scroll;
   }
 }
