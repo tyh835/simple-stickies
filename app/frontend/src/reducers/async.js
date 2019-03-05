@@ -13,7 +13,7 @@ import {
   SAVE_START,
   SAVE_END,
   SAVE_ERROR
-} from '../actionTypes';
+} from '../actions/types';
 
 const initialState = {
   saving: false,

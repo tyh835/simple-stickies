@@ -1,10 +1,10 @@
-import { CLOSE_MODAL, OPEN_MODAL } from '../actionTypes';
+import { CLOSE_MODAL, OPEN_MODAL } from './types';
 import {
   EDIT_NOTE_MODAL,
   LOGIN_MODAL,
   POST_NOTE_MODAL,
   REGISTRATION_MODAL
-} from '../components/Modals/types';
+} from '../components/modals/types';
 
 export const closeModal = () => ({
   type: CLOSE_MODAL

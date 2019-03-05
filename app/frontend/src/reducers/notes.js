@@ -10,7 +10,7 @@ import {
   UPDATE_NEW_NOTE,
   UPDATE_NEW_NOTE_COLOR,
   LOGOUT_SUCCESS
-} from '../actionTypes';
+} from '../actions/types';
 
 const tutorialNotes = [
   {

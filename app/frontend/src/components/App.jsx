@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Layout from './Layout';
+import Layout from './layout';
+import Modals from './modals';
 import StickyBoard from './StickyBoard';
-import Modals from './Modals';
 import { closeModal, loadUser, fetchNotes } from '../actions';
 
 const App = ({

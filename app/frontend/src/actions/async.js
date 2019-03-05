@@ -1,4 +1,4 @@
-import { DISMISS_ERROR } from '../actionTypes';
+import { DISMISS_ERROR } from './types';
 
 export const dismissError = key => ({
   type: DISMISS_ERROR,

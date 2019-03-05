@@ -13,7 +13,7 @@ import {
   REGISTRATION_ERROR,
   UPDATE_LOGIN_FORM,
   UPDATE_REGISTRATION_FORM
-} from '../actionTypes';
+} from './types';
 import { getAuthConfig } from '../utils/auth';
 
 export const loadUser = () => async dispatch => {

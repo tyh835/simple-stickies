@@ -17,7 +17,7 @@ import {
   SAVE_START,
   SAVE_END,
   CLOSE_MODAL
-} from '../actionTypes';
+} from './types';
 import { noteHasChanges } from '../utils/notes';
 import { getAuthConfig } from '../utils/auth';
 
