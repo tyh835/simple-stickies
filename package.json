@@ -6,7 +6,7 @@
   "main": "index.js",
   "repository": "https://github.com/tyh835/simple-stickys.git",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bulma": "^0.7.2",
     "bulma-pageloader": "^2.1.0",
     "prop-types": "^15.6.2",
